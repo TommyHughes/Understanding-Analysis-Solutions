@@ -1,0 +1,364 @@
+\section*{4.3}
+\begin{enumerate}
+    \item Let \( g(x) = \sqrt[3]{x} \).
+    \begin{enumerate}
+        \item Prove that \( g \) is continuous at \( c = 0 \).
+        \item Prove that \( g \) is continuous at a point \( c \neq 0 \). (The identity \( a^{3}-b^{3} = (a-b)(a^{2}+ab+b^{2}) \) will be helpful.)
+    \end{enumerate}
+    \begin{proof}
+    \begin{enumerate}
+        \item We first observe that
+        \[
+        \vert \sqrt[3]{x} \vert = \sqrt[3]{\vert x \vert}
+        \]
+        and that if \( x_{1} \leq x_{2} \) then \( \sqrt[3]{x_{1}} \leq \sqrt[3]{x_{2}} \), that is say, \( \sqrt[3]{x} \) is increasing. The first observation is obvious. To demonstrate the latter observation suppose, to the contrary, that \( \sqrt[3]{x_{2}} < \sqrt[3]{x_{1}} \). Then we would have
+        \[
+        x_{2} = \sqrt[3]{x_{2}}^{3} < \sqrt[3]{x_{1}}^{3} = x_{1}
+        \]
+        which contradicts with our assumption that \( x_{1} \leq x_{2} \). So, if \( \epsilon > 0 \) is given, then choosing \( \vert x \vert < \epsilon^{3} \) it follows that
+        \[
+        \vert \sqrt[3]{x} \vert = \sqrt[3]{\vert x \vert} < \sqrt[3]{\epsilon^{3}} = \epsilon
+        \]
+        Therefore, \( \sqrt[3]{x} \) is continuous at \( 0 \).
+        
+        \item Let \( c \neq 0 \) and let \( \epsilon > 0 \) be given. We observe that
+        \[
+        x- c = (x^{\frac{1}{3}}-c^{\frac{1}{3}})(x^{\frac{2}{3}}+x^{\frac{1}{3}}c^{\frac{1}{3}}+c^{\frac{2}{3}})
+        \]
+        If we let \( y = x^{\frac{1}{3}} \) then we get that
+        \[
+        x^{\frac{2}{3}}+c^{\frac{1}{3}}x^{\frac{1}{3}}+c^{\frac{2}{3}} = y^{2}+c^{\frac{1}{3}}y+c^{\frac{2}{3}}
+        \]
+        which means that this expression is quadratic in \( y \). Furthermore, one can easily verify, using the quadratic formula, that since \( c \neq 0 \) it follows that \( c \) is not a root of \( y^{2}+c^{\frac{1}{3}}y+c^{\frac{2}{3}} \). Thus, since \( x^{\frac{1}{3}} \) is continuous at \( 0 \) it follows that there exists \( \delta > 0 \) and \( M_{2} > M_{1} > 0 \) such that whenever \( \vert x - c \vert < \delta_{1} \) we will have that
+        \[
+        M_{1} < \vert x^{\frac{2}{3}}+c^{\frac{1}{3}}x^{\frac{1}{3}}+c^{\frac{2}{3}} \vert < M_{2}
+        \]
+        Notice this implies that \( \frac{M_{1}}{\vert x^{\frac{2}{3}}+c^{\frac{1}{3}}x^{\frac{1}{3}}+c^{\frac{2}{3}} \vert} < 1 \) for \( x \) close enough to \( c \). So, if \( \delta = \min \{ d_{1}, \epsilon M_{1} \} \) then it follows that whenever \( \vert x-c \vert < \delta \) we get
+        \[
+        \vert x^{\frac{1}{3}} - c^{\frac{1}{3}} \vert = \frac{\vert x-c \vert}{ \vert x^{\frac{2}{3}}+c^{\frac{1}{3}}x^{\frac{1}{3}}+c^{\frac{2}{3}} \vert } < \frac{\epsilon M_{1}}{\vert x^{\frac{2}{3}}+c^{\frac{1}{3}}x^{\frac{1}{3}}+c^{\frac{2}{3}} \vert} < \epsilon
+        \]
+        which was to be demonstrated.
+    \end{enumerate}
+    \end{proof}
+    
+    \item \begin{enumerate}
+        \item Supply a proof for Theorem 4.3.9 using the \( \epsilon \)-\(\delta \) characterization of continuity.
+        
+        \item Give another proof of this theorem using the sequential characterization of continuity.
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( \epsilon > 0 \) be given. By continuity of \( g \) at \( f(c) \) we know that there exists \( \delta_{1} > 0 \) such that \( \vert f(x) - f(c) \vert < \delta_{1} \) implies \linebreak \( \vert g(f(x)) - g(f(c)) \vert < \epsilon \). Furthermore, by continuity of \( f \) at \( c \), we know that there exists \( \delta_{2} > 0 \) such that \( \vert x - c \vert < \delta_{2} \) implies \linebreak \( \vert f(x) - f(c) \vert < \delta_{1} \). Thus, for \( \vert x - c \vert < \delta_{2} \) we have that 
+        \[
+        \vert g(f(x)) - g(f(c)) \vert < \epsilon
+        \]
+        as desired.
+        
+        \item Let \( (x_{n}) \rightarrow c \) with \( x_{n} \in A \). Since \( f \) is continuous at \( c \), it follows \( f(x_{n}) \rightarrow f(c) \). But then, by continuity of \( g \) at \( f(c) \) it follows \( g(f(x_{n})) \rightarrow g(f(c)) \). 
+    \end{enumerate}
+    \end{proof}
+    
+    \item Using the \( \epsilon \)-\( \delta \) characterization of continuity (and thus using no previous results about sequences), show that the linear function \( f(x) = ax+b \) is continuous at every point of \( \mathbb{R} \). 
+    \begin{proof}
+    Let \( \epsilon > 0 \) be given and let \( c \in \mathbb{R} \). If \( \vert x - c \vert < \frac{\epsilon}{\vert a \vert} \) then it follows that
+    \[
+    \vert f(x) - f(c) \vert = \vert ax+b -ac-b \vert = \vert ax - ac \vert = \vert a \vert \vert x - c \vert < \vert a \vert \frac{\epsilon}{\vert a \vert} = \epsilon
+    \]
+    Thus \( ax+b \) is continuous on \( \mathbb{R} \). 
+    \end{proof}
+    
+    \item \begin{enumerate}
+    \item Show using Definition 4.3.1 that any function \( f \) with domain \( \mathbb{Z} \) will necessarily be continuous at every point in its domain.
+    
+    \item Show in general that if \( c \) is an isolated point of \( A \subseteq \mathbb{R} \), then \( f:A \rightarrow \mathbb{R} \) is continuous at \(c \).
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( \epsilon > 0 \) be given. Notice \( \vert x-c \vert < \frac{1}{2} \) and \( x \in \mathbb{Z} \) implies \( x=c \). Thus for all such \( x \)
+        \[
+        \vert f(x) - f(c) \vert = 0 < \epsilon.
+        \]
+        
+        \item Let \( \epsilon > 0 \) be given. If \( c \) is isolated in \( A \subseteq \mathbb{R} \) then there exists \( \delta > 0 \) s.t. \( V_{\delta}(c) \cap A = \{ c \} \). Thus \( \forall x \in V_{\delta}(c) \cap A \) we have
+        \[
+        \vert f(x) - f(c) \vert = 0
+        \]
+        Therefore, for all such \( x \) we have
+        \[
+        f(x) \in V_{\epsilon}(f(c))
+        \]
+    \end{enumerate}
+    \end{proof}
+    
+    \item In thoerem 4.3.4, statement (iv) syas that \( f(x)/g(x) \) is continuous at c if both \( f \) and \( g \) are, provided that the quotient is defined. Show that if \( g \) is continuous at \( c \) and \( g(c) \neq 0 \), then there exists an open interval containing \( c \) on which \( f(x)/g(x) \) is always defined.
+    
+    \begin{proof}
+    We begin by noting that \( f(x)/g(x) \) is defined where \( f \) and \( g \) are defined and \( g \) is non-zero. Since, by assumption in Theorem 4.3.4, \( f \) and \( g \) are both defined on the same domain \( A \) we need only then to show that there is an open interval containing \( c \) such that \( g(x) \neq 0 \) for every \( x \) in the interval. To demonstrate, suppose, to the contrary, that every open interval containing \( c \) contains an x such that \( g(x) = 0 \). Then by choosing the sequence of nested intervals given by
+    \[
+    I_{k} = (c-\frac{1}{k},c+\frac{1}{k})
+    \]\
+    and selecting a sequence of points
+    \[
+    x_{k} \in I_{k}
+    \]
+    such that \( g(x_{k})=0 \), we would get that \( x_{k} \rightarrow c \) while \( g(x_{k}) \rightarrow 0 \) contradciting with \( g(c) \neq 0 \) and g continuous at \( c \). thus there is an open interval, \( I \), containing \( c \) such that \( g(x) \neq 0 \) for every \( x \in I \). Therefore, \( f(x)/g(x) \) is always defined on \( I \).
+    \end{proof}
+    
+    \item \begin{enumerate}
+        \item Referring to the proper theorems, give a formal argument that Dirichlet's function from Section 4.1 is nowhere-continuous on \( \mathbb{R} \).
+        
+        \item Review the definition of Thomae's function in Section 4.1and demonstrate that it fails to be continuous at every rational point.
+        
+        \item Use the characterization of continuity in theorem 4.3.2 (iii) to show that Thomae's function is continuous at every irrational point in \( \mathbb{R} \). 
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( c \in \mathbb{R} \). We recall that Direichlet's function is defined by
+        \[
+        g(x) = \begin{cases}
+        1 & x \in \mathbb{Q} \\
+        0 & x \not\in \mathbb{Q}
+        \end{cases}
+        \]
+        If \( x_{n} \rightarrow c \) with \( \forall_{n} x_{n} \in \mathbb{Q} \) we get \( g(x) \rightarrow 1 \). On the other hand, if \( y_{n} \rightarrow c \) with \( \forall_{n} y_{n} \not\in \mathbb{Q} \) we get \( g(y_{n}) \rightarrow 0 \). So, by Theorem 4.3.2, it follows that \( g \) is not continuous at \( c \). Therefore, \( g \) is nowhere-continuous on \( \mathbb{R} \).
+        
+        \item Let \( c \in \mathbb{Q} \). By our Lemma in Exercise 4 from 4.2 we know that if \( x_{n} \rightarrow c \) with \( \forall_{n} x_{n} \in \mathbb{Q} \) we will have \( t(x_{n}) \rightarrow 0 \). However, \( t(c) = 1 \neq 0 \). Thus, again, by Theorem 4.3.2, it follows \( t \) is nowhere-continuous on \( \mathbb{Q} \).
+        
+        \item Let \( \epsilon > 0 \) be given and let \( c \not\in \mathbb{Q} \). So \( t(c) = 0 \). As was argued in Exercise 4(c) from 4.2 we know that \( S = \{ x \in \mathbb{R} : t(x) \geq \epsilon \} \) has no limit points. Thus \( c \) is not a limit point of \( S \). Therefore there exists \( \delta > 0 \) such that \( x \in V_{\delta}(c) \) implies \( x \not\in S \). Thus, \( x \in V_{\delta}(c) \) implies \( \vert t(x) - t(c) \vert = t(x) < \epsilon \) which is equivalent to  
+        \[
+        t(V_{\delta}(c)) \subset V_{\epsilon}(t(c))
+        \]
+        Therefore, \( t \) is continuous at \( c \). 
+    \end{enumerate}
+    \end{proof}
+    
+    \item Assume \( h: \mathbb{R} \rightarrow \mathbb{R} \) is continuous on \( \mathbb{R} \) and let \( K = \{ x: h(x) = 0 \} \). Show that \( K \) is a closed set.
+    
+    \begin{proof}
+    Let \( l \) be a limit point of \( K \). So there exists \( k_{n} \rightarrow l \) such that \( \forall_{n} k_{n} \neq l\) and \( k_{n} \in K \). By continuity of \( h \) on \( \mathbb{R} \), we get that 
+    \[
+    h(k_{n}) \rightarrow h(l)
+    \]
+    But \( h(k_{n}) = 0 \) for all \( n \). Thus \( h(k_{n}) \rightarrow 0 \). Thus, by uniqueness of the limit, it follows that \( h(l) = 0 \). therefore \( l \in K \). So \( K \) contains all its limit points. Therefore, \( K \) is closed.
+    \end{proof}
+    
+    \item \begin{enumerate}
+        \item Show that if a function is continuous on all of \( \mathbb{R} \) and equal to \( 0 \) at every rational point, then it must be identically \( 0 \) on all of \( \mathbb{R} \).
+        
+        \item If \( f \) and \( g \) are continuous on all of \( \mathbb{R} \) and \( f(r) = g(r) \) at every rational point, must \( f \) and \( g \) be the same function?
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Suppose, to the contrary, that there exists \( c \not\in \mathbb{Q} \) such that
+        \[
+        f(c) \neq 0
+        \]
+        By density of \( \mathbb{Q} \) in \( \mathbb{R} \) there is
+        \[
+        x_{n} \rightarrow c
+        \]
+        where \( \forall_{n} x_{n} \neq c \) and \( x_{n} \in \mathbb{Q} \). By continuity of \( f \) at \( c \) we would then have
+        \[
+        f(x_{n}) \rightarrow f(c)
+        \]
+        But \( f(x_{n}) \rightarrow 0 \) contradicting with \( f(c) \neq 0 \). Thus \( f(c) = 0 \). Thus \(f(x) = 0 \) for all \( x \in \mathbb{R} \).
+        
+        \item We claim that, indeed, \( f \) and \( g \) must be the same function. To demonstrate, suppose to the contrary, that there are \( f \) and \( g \), both continuous on \( \mathbb{R} \) and which agree on \( \mathbb{Q} \), which are different. So there exists \( x \not\in \mathbb{Q} \) such that \( f(x) - g(x) \neq 0 \). Thus, if we define \( h(x) = f(x) - g(x) \), by the Algebraic Continuity Theorem, we know that \( h \) is continuous on \( \mathbb{R} \) and that \( h(x) \neq 0 \). By reasoning quite the same as in Exercise 5 above, we know then there is an open interval, I, about \( x \) such that \( h(x) \neq 0 \) for all \( x \in I \). But by density of \( \mathbb{Q} \) in \( \mathbb{R} \), it would then follow that there exists \( r \in \mathbb{Q} \cap I\) such that \( h(r) \neq 0 \). So \( f(r) - g(r) \neq 0 \). So \( f(r) \neq g(r) \) contradicting with our assumption that \( f(r) = g(r) \) for all \( r \in \mathbb{Q} \). 
+    \end{enumerate}
+    \end{proof}
+    
+    \item (Contraction Mapping Theorem). Let \( f \) be a function defined on all of \( \mathbb{R} \), and assume there is a constant \( c \) such that \( 0 < c < 1 \) and
+    \[
+    \vert f(x) - f(y) \vert \leq c \vert x - y \vert
+    \]
+    for all \( x,y \in \mathbb{R} \).
+    \begin{enumerate}
+        \item Show that \( f \) is continuous on \( \mathbb{R} \).
+        
+        \item Pick some point \( y_{1} \in \mathbb{R} \) and construct the sequence
+        \[
+        (y_{1}, f(y_{1}),f(f(y_{1})),\ldots)
+        \]
+        In general, if \( y_{n+1} = f(y_{n}) \), show that the resulting sequence \( (y_{n}) \) is a Cauchy sequence. Hence we may let \( y = \lim y_{n} \). 
+        
+        \item Prove that \( y \) is a fixed point of \( f \).
+        
+        \item Finally, prove that if \( x \) is any arbitrary point in \( \mathbb{R} \) then the sequence \( (x,f(x),f(f(x)),\ldots) \) converges to \( y \) in (b).
+        \end{enumerate}
+        
+        \begin{proof}
+        \begin{enumerate}
+            \item Let \( \epsilon > 0 \) be given and let \( z \in \mathbb{R} \). If \( \vert x - z \vert < \frac{\epsilon}{c} \) then
+            \[
+            \vert f(x) - f(z) \vert < c\vert x-z \vert < c \frac{\epsilon}{c} = \epsilon
+            \]
+            as desired. 
+            
+            \item We first wish to show that the sequence \( (y_{n}) \) is bounded. So given \( n \in \mathbb{N} \) we have
+            \begin{align*}
+                \vert y_{n} \vert &= \vert y_{1} + (y_{2}-y_{1}) + (y_{3}-y_{2}) + (y_{4}-y_{3}) + \ldots + (y_{n-1}+y_{n-2}) + (y_{n}-y_{n-1}) \vert \\
+                &\leq \vert y_{1} \vert + \vert y_{2}-y_{1} \vert + \vert y_{3}-y_{2} \vert + \vert y_{4}-y_{3} \vert + \ldots + \vert y_{n}-y_{n-1} \vert \\
+                &< \vert y_{1} \vert + \vert y_{2} - y_{1} \vert + c \vert y_{2}-y_{1} \vert + c^{2} \vert y_{2} - y_{1} \vert + \ldots + c^{n-2} \vert y_{2}-y_{1} \vert \\
+                \intertext{recognizing that this a geometric series, we get}
+                &= \vert y_{1} \vert + \frac{\vert y_{2} - y_{1} \vert(1-c^{n-1})}{1-c} \\
+                \intertext{by recalling that \( 0 < c < 1 \) we get that}
+                &< \vert y_{1} \vert + \frac{\vert y_{2}-y_{1} \vert}{1-c}
+            \end{align*}
+            which implies then that \( (y_{n}) \) is bounded. It therefore follows that there exists \( K > 0 \) such that for all \( n \in \mathbb{N} \) we have that \( \vert y_{n} - y_{1} \vert < K \). So, choosing \( N \) so that \( c^{N} < \frac{\epsilon}{K} \) we get that for all \( n > m > N \) we have
+            \begin{align*}
+                \vert y_{n} - y_{m} \vert &< c \vert y_{n-1} - y_{m-1} \vert \\
+                &< c^{2} \vert y_{n-2} - y_{m-2} \vert \\
+                &\vdots \\
+                &<c^{m-1} \vert y_{n-(m-1)} - y_{1} \vert \\
+                &< c^{m-1} K \\
+                &< \frac{\epsilon}{K}K \\
+                &= \epsilon
+            \end{align*}
+            Therfore, \( (y_{n}) \) is a Cauchy sequence and we set \( y = \lim y_{n} \). 
+            
+            \item By (a) we know that \( f \) is continuous. Therefore
+            \[
+            f(y) = f(\lim y_{n}) = \lim f(y_{n}) = \lim y_{n+1} = y
+            \]
+            It follows, by a previous theorem, that \( y \) is therefore unique.
+            
+            \item Choose \( x \in \mathbb{R} \) and let the sequence \( (x_{n}) \) be defined by \( x_{n+1} = f(x_{n}) \). Then choosing \( N \in \mathbb{N} \) so that \( c^{N} < \frac{\epsilon}{\vert y-x \vert} \) implies that for all \( n > N \) we have
+            \begin{align*}
+                \vert y_{n} - x_{n} \vert &< c \vert y_{n-1} - x_{n-1} \vert \\
+                &\vdots \\
+                &< c^{n-1} \vert y-x \vert \\
+                &< \frac{\epsilon}{\vert y-x \vert} \vert y-x \vert \\
+                &= \epsilon
+            \end{align*}
+            implying that \( \lim x_{n} = \lim y_{n} = y \). 
+        \end{enumerate}
+        \end{proof}
+        
+        \item Let \( f \) be a function defined on all of \( \mathbb{R} \) that satisfies the additive condition \( f(x+y) = f(x) + f(y) \) for all \( x,y \in \mathbb{R} \).
+        \begin{enumerate}
+            \item Show that \( f(0) = 0 \) and that \( f(-x) = -f(x) \) for all \( x \in \mathbb{R} \).
+            \item Show that if \( f \) is continuous at \( x=0 \), then \( f \) is continuous at every point in \( \mathbb{R} \).
+            \item Let \( k = f(1) \) show that \( f(n) = kn \) for all \( n \in \mathbb{N} \), and then prove that \( f(z) - kz \) for all \( z \in \mathbb{Z} \). Now, prove that \( f(r) = kr \) for all \( r \in \mathbb{Q} \).
+            \item Use (b) and (c) to conclude that \( f(x) = kx \) for all \( x \in \mathbb{R} \). Thus, any additive function that is continuous at \( x=0 \) must necessarily be a linear function through the origin.
+        \end{enumerate}
+        
+        \begin{proof}
+        \begin{enumerate}
+            \item We observe that
+            \begin{align*}
+                f(0) &= f(0+0) \\
+                &= f(0) + f(0) \\
+                \intertext{and therefore, by subtracting on both sides by \( f(0) \), we get}
+                f(0)-f(0) &= f(0) + f(0) - f(0) \\
+                0 &= f(0)
+            \end{align*}
+            We then have that
+            \begin{align*}
+                0 &= f(0) \\
+                &= f(x+(-x)) \\
+                &= f(x) + f(-x) \\
+                \intertext{and so, subtracting \( f(x) \) from both sides yields}
+                0 -f(x) &= f(x) + f(-x) - f(x) \\
+                -f(x) &= f(-x)
+            \end{align*}
+            
+            \item Let \( f \) be continuous at \( 0 \), \(c \in \mathbb{R} \), and \( \epsilon > 0 \) be given. Since \( f \) is continuous at \( 0 \) it follows that there exists \( \delta > 0 \) such that \( \vert y \vert < \delta \) implies \( \vert f(y) \vert < \epsilon \). Thus if \( \vert x-c \vert < \delta \) then we have
+            \[
+            \vert f(x) - f(c) \vert = \vert f(x-c) \vert < \epsilon
+            \]
+            So, \( f \) is continuous at \( c \) and so on \( \mathbb{R} \). It follows that \( f \) is continuous on \( \mathbb{R} \). 
+            
+            \item Let \( n \in \mathbb{N} \) and \( k = f(1) \). We observe that
+            \[
+            f(n) = f\left(\sum_{i=1}^{n}1\right) = \sum_{i=1}^{n} f(1) = kn
+            \]
+            If \( z \in \mathbb{Z} \) then either \( z \geq 0 \) or \( z < 0 \). If the former then clearly \( f(z) = kz \). If the latter then \( z = -n \) for some \( n \in \mathbb{N} \).
+            \[
+            f(z) = f(-n) = -f(n) = -kn = k(-n) = kz
+            \]
+            Now, let \( r \in \mathbb{Q} \). So \( r \) is of the form \( \frac{p}{q} \) where \( p,q \in \mathbb{Z} \) and \( q \neq 0 \). We first observe that if \( q > 0 \) 
+            \begin{align*}
+                f(1) &= f\left( \sum_{i=1}^{q} \frac{1}{q} \right) \\
+                &= \sum_{i=1}^{q} f\left( \frac{1}{q} \right) \\
+                &= f\left( \frac{1}{q} \right)\sum_{i=1}^{q} 1 \\
+                &= f\left( \frac{1}{q} \right)q \\
+                \intertext{and so}
+                \frac{f(1)}{q} &= f\left( \frac{1}{q} \right) \\
+                \frac{k}{q} &= f\left( \frac{1}{q} \right) \\
+                \intertext{So then}
+                -\frac{k}{q} &= -f\left( \frac{1}{q} \right) \\
+                 &= f\left( - \frac{1}{q} \right)
+            \end{align*}
+            and so if \( p = 0 \) we are done. If \( sgn(p) = sgn(q) \) then 
+            \begin{align*}
+                f\left( \frac{p}{q} \right) &= f\left( \sum_{i=1}^{\vert p \vert} \frac{1}{\vert q \vert} \right) \\
+                &= \sum_{i=1}^{\vert p \vert } f\left( \frac{1}{\vert q \vert} \right) \\
+                &= f\left( \frac{1}{\vert q \vert} \right) \sum_{i=1}^{\vert p \vert} 1 \\
+                &= f\left( \frac{1}{\vert q \vert} \right) \vert p \vert \\
+                &= \frac{k}{\vert q \vert} \vert p \vert \\
+                &= k \frac{p}{q}
+            \end{align*}
+            On the other hand, if \( sgn(p) \neq sgn(q) \) then
+            \begin{align*}
+                f\left( \frac{p}{q} \right) &= f\left( -\frac{\vert p \vert}{\vert q \vert} \right) \\
+                &= - f\left( \frac{\vert p \vert}{\vert q \vert} \right) \\
+                &= - k \frac{\vert p \vert}{\vert q \vert} \\
+                &= k\frac{p}{q}
+            \end{align*}
+            thus \( f(r) = kr \) for all \( r \in \mathbb{Q} \). 
+            
+            \item From (b) we know that \( f \) is continuous on all of \( \mathbb{R} \). From (c) we also know that \( f \) and \( g(x) = kx \) must be identical on all of \( \mathbb{Q} \). Therefore, from Exercise 8, we know that \( f=g \) on all of \( \mathbb{R} \). Therefore \( f(x) = kx \) for all \( x \in \mathbb{R} \). 
+        \end{enumerate}
+        \end{proof}
+        
+        \item For each of the following choices of \( A \), construct a function \( f: \mathbb{R} \rightarrow \mathbb{R} \) that has discontinuities at every point \( x \) in \( A \) and is continuous on \( A^{c} \).
+        \begin{enumerate}
+            \item \( A = \mathbb{Z} \)
+            \item \( A = \{ x: 0 < x < 1 \} \)
+            \item \( A = \{ x: 0 \leq x \leq 1 \} \)
+            \item \( A = \{ \frac{1}{n}: n \in \mathbb{N} \} \)
+        \end{enumerate}
+        \begin{proof}
+        \begin{enumerate}
+            \item
+            \[
+            f(x) = \begin{cases} 0 & ,x \in \mathbb{Z} \\ 1 & ,\text{elsewhere} \end{cases}
+            \]
+            
+            \item 
+            \[
+            f(x) = \begin{cases} 0 & , x \leq 0 \\ x & , x \in \mathbb{Q} \cap (0, \frac{1}{2}] \\ 0 & x \in (\mathbb{R} \setminus \mathbb{Q}) \cap (0,\frac{1}{2}] \\ -x &, x \in \mathbb{Q} \cap (\frac{1}{2}, 1) \\ 0 &, x \in (\mathbb{R} \setminus \mathbb{Q}) \cap (\frac{1}{2}, 1) \\ 0 &, x \geq 1 \end{cases}
+            \]
+            
+            \item 
+            \[
+            f(x) = \begin{cases} \frac{1}{2} &, x < 0 \\ 0 & x \in (\mathbb{R} \setminus \mathbb{Q}) \cap [0,1] \\ 1 &, x \in \mathbb{Q} \cap [0,1] \\ \frac{1}{2} &, x > 1\end{cases}
+            \]
+            
+            \item 
+            \[
+            f(x) = \begin{cases} x &, x \in A \\ 2 & x \not\in A \end{cases}
+            \]
+        \end{enumerate}
+        \end{proof}
+        
+        \item Let \( C \) be the Cantor set constructed in Section 3.1. Define \( g: [0,1] \rightarrow \mathbb{R} \) by
+        \[
+        g(x) = \begin{cases} 1 & x \in C \\ 0 & x \not\in C \end{cases}
+        \]
+        \begin{enumerate}
+            \item Show that \( g \) fails to be continuous at any point \( c \in C \).
+            \item Prove that \( g \) is continuous at every point \( c \not\in C \).
+        \end{enumerate}
+        \begin{proof}
+        \begin{enumerate}
+            \item Let \( x \in C \). Recall that \( C \) does not contain any intervals. So \( \forall \delta > 0 \) we have \( V_{\delta}(x) \cap C^{c} \neq \emptyset \). It is easy then to show that \( \exists \epsilon > 0  \: \forall \delta > 0 \: \exists z \in V_{\delta}(x) \) such that \( f(z) \not\in V_{\epsilon}(f(x)) \).
+            
+            \item Let \( x \not\in C \). 
+        \end{enumerate}
+        \end{proof}
+\end{enumerate}

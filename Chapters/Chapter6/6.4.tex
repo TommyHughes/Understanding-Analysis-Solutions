@@ -1,0 +1,132 @@
+\section*{6.4}
+\begin{enumerate}
+    \item Prove that if \( \sum_{n=1}^{\infty} g_n \) converges uniformly, then \( (g_n) \) converges uniformly to zero.
+    
+    \begin{proof}
+    So, we have that \( (s_n) \) is Cauchy. That is, given \( \epsilon > 0 \), there is \( N \in \mathbb{N} \) such that, for all \( n \geq m \geq N \) we have
+    \[
+    \vert s_n(x) - s_m(x) \vert < \epsilon
+    \]
+    for all \( x \). In particular for \( m = n-1 \). So
+    \[
+    \vert s_n(x) - s_{n-1}(x) \vert = \vert g_n(x) \vert < \epsilon
+    \]
+    for all \( x \). Thus \( g_n \rightarrow 0 \) uniformly.
+    \end{proof}
+    
+    \item Supply the details for the proof of the Weierstrass M-Test (Corollary 6.4.5)
+    
+    \begin{proof}
+    Since \( \sum_{1}^{\infty} M_n \) converges, the sequence of partial sums, \( (t_n) \) must converge. So, let \( \epsilon > 0 \) be given and choose \( N \) so that for all \( n \geq m \geq N \) we have
+    \[
+    \vert t_n - t_m \vert = \vert M_{m+1} + M_{m+2} + \ldots + M_n \vert = M_{m+1} + \ldots + M_n < \epsilon
+    \]
+    Then, if \( (s_n) \) is the sequence of the partial sums of \( (f_n) \), then, for all \( x \in A \) and for all \( n \geq m \geq N \), we will have
+    \[
+    \vert s_n(x) - s_m(x) \vert = \vert f_{m+1}(x) + \ldots + f_n(x) \vert \leq \vert f_{m+1}(x) \vert + \ldots + \vert f_n(x) \vert \leq M_{m+1} + \ldots + M_n < \epsilon
+    \]
+    Therefore, \( \sum f_n \) converges uniformly on \( A \). 
+    \end{proof}
+    
+    \item \begin{enumerate}
+        \item Show that \( g(x) = \sum_{n=1}^{\infty} \frac{\cos(2^nx)}{2^n} \) is continuous on all of \( \mathbb{R} \).
+        
+        \item Prove that \( h(x) = \sum_{n=1}^{\infty} \frac{x^n}{n^2} \) is continuous on \( [-1,1] \). 
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item We observe that
+        \[
+        \vert f_n(x) \vert = \left| \frac{\cos(2^nx)}{2^n} \right| \leq \frac{1}{2^n} = M_n
+        \]
+        for all \( x \in \mathbb{R} \). Moreover, \( \sum M_n = \sum ( 1/2)^n \) is convergent. Therefore, by the M-Test, we have that \( \sum \frac{\cos(2^nx)}{2^n} \) is uniformly convergent on \( \mathbb{R} \). Since \( f_n \) is continuous on \( \mathbb{R} \) for every \( n \), it follows, by Theorem 6.4.2, that \( \sum f_n = \sum \frac{\cos(2^nx)}{2^n} \) is continuous on \( \mathbb{R} \)
+        
+        \item we observe that, on \( [-1,1] \), we get that
+        \[
+        \left| \frac{x^n}{n^2} \right| \leq \frac{1}{n^2} = M_n
+        \]
+        Furthermore, \( \sum \frac{1}{n^2} \) is convergent, and therefore, by the M-Test, we get that \( \sum_{n=1}^{\infty} \frac{x^n}{n^2} \) is uniformly convergent on \( [-1,1] \). Furthermore, since 
+    \end{enumerate}
+    \end{proof}
+    
+    \item In Section 5.4, we postponed the argument that the nowhere differentiable function
+    \[
+    g(x) = \sum_{n=0}^{\infty} \frac{1}{2^n}h(2^nx)
+    \]
+    is continuous on \( \mathbb{R} \). Use the Weierstrass M-Test to supply the missing proof.
+    
+    \begin{proof}
+    Observe that
+    \[
+    \left| \frac{1}{2^n}h(2^nx) \right| \leq \frac{1}{2^n} = M_n
+    \]
+    for all \( x \in \mathbb{R} \). Thus, for similar reasons as in the previous exercise we will get that \( \sum_{n=0}^{\infty} \frac{1}{2^n}h(2^nx) \) converges uniformly on \( \mathbb{R} \). Furthermore, by the Algebraic Continuity Theorem, we get that \( \frac{1}{2^n}h(2^nx) \) is continuous on \( \mathbb{R} \) for all \( n \). Therefore, again, by Theorem 6.4.2, we get that \( g(x) \) is continuous on \( \mathbb{R} \).
+    \end{proof}
+    
+    \item Let
+    \[
+    f(x) = \sum_{k=1}^{\infty} \frac{\sin(kx)}{k^3}
+    \]
+    \begin{enumerate}
+        \item Show that \( f(x) \) is differentiable and that the derivative \( f'(x) \) is continuous.
+        \item Can we determine if \( f \) is twice differentiable?
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Let
+        \[
+        f_n(x) = \sum_{k=1}^\infty \frac{\sin(kx)}{k^3}
+        \]
+        Then, we see that if \( [a,b] \) is an interval containing zero, then there is a point in \( a,b \) for which \( \sum f_n \) is convergent. In particular if \( x = 0 \) we have
+        \[
+        \sum_{k=1}^\infty f_n(0) \rightarrow 0
+        \]
+        Furthermore,
+        \[
+        f_n'(x) = \frac{\cos(kx)}{k^2}
+        \]
+        Now, since
+        \[
+        \vert f_n'(x) \vert \leq \frac{1}{k^2} = M_k
+        \]
+        it follows by the convergence of \( \sum \frac{1}{k^2} \) and by the M-Test that \( \sum f_n'(x) \) is uniformly convergent on \( \mathbb{R} \). Then, by Theorem 6.4.3, it follows \( \sum \frac{\sin(kx)}{k^3} \rightarrow f(x) \) uniformly on \( \mathbb{R} \) and that \( f(x) \) is differentiable on \( \mathbb{R} \). Furthermore,
+        \[
+        f'(x) = \sum_{k=1}^\infty \frac{\cos(kx)}{k^2}
+        \]
+        By uniform convergence of \( \sum \frac{cos(kx)}{k^2} \) on \( \mathbb{R} \) and continuity of \( \frac{\cos(kx)}{k^2} \), it follows by Theorem 6.4.2 that \( f'(x) \) is continuous on \( \mathbb{R} \). 
+        
+        \item Not by the methods outlined in this section. We see that
+        \[
+        \vert f_n''(x) \vert \leq \frac{1}{k} = M_k
+        \]
+        but \( \sum M_k \) does not converge. Thus, we cannot use the M-Test, as in the above, to establish uniform convergence of \( \sum f_n''(x) \).
+    \end{enumerate}
+    \end{proof}
+    
+    \item Observe that the series
+    \[
+    f(x) = \sum_{n=1}^{\infty} \frac{x^n}{n} = x + \frac{x^2}{2} + \frac{x^3}{3} + \frac{x^4}{4} + \ldots
+    \]
+    converges for every \( x \) in the half-open interval \( [0,1) \) but does not converge when \( x=1 \). For a fixed \( x_0 \in (0,1) \), explain how we can still use the Weierstrass M-Test to prove that \( f \) is continuous at \( x_0 \). 
+    
+    \begin{proof}
+    Let \( f_n = \frac{x^n}{n} \). So \( f_n'(x) = x^{n-1} \). Then, clearly, on \( (0,1) \), the M-Test establishes that \( \sum f_n'(x) \) is uniformly convergent. By convergence of \( f(x_0) \), it follows that on some interval \( [a,b] \subset (0,1) \) such that \( x_0 \in [a,b] \), we get that \( f \) is differentiable. But then \( f \) must be continuous on \( [a,b] \). Therefore \( f \) is continuous at \( x_0 \).
+    \end{proof}
+    
+    \item Let
+    \[
+    h(x) = \sum_{n=1}^{\infty} \frac{1}{x^2+n^2}
+    \]
+    \begin{enumerate}
+        \item Show that \( h \) is a continuous function defined on all of \( \mathbb{R} \).
+        \item Is \( h \) differentiable? If so, is the derivative function \( h' \) continuous?
+    \end{enumerate}
+    
+    \item Let \( \{ r_1,r_2,r_3,\ldots \} \) be an enumeration of the set of rational numbers. For each \( r_n \in \mathbb{Q} \), define
+    \[
+    u_n(x) = \begin{cases} \frac{1}{2^n} & \text{ for } x > r_n \\ 0 & \text{ and } x \leq r_n \end{cases}
+    \]
+    Now, let \( h(x) = \sum_{n=1}^{\infty} u_n(x) \). Prove that \( h \) is a monotone function defined on all of \( \mathbb{R} \) that is continuous at every irrational point.
+\end{enumerate}

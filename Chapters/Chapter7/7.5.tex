@@ -1,0 +1,46 @@
+\section*{7.5}
+\begin{enumerate}
+    \item We have seen that not every derivative is continuous, but explain how we know that every continuous is a derivative.
+    \begin{proof}
+    We know that if a function, \( f \), is continuous then it is integrable. By FToC we know that if 
+    \[
+    F(x) = \int_a^x f
+    \]
+    and \( f \) is continuous at \( x \), then \( F'(x) = f(x) \). Since we know \( f \) is continuous, it follows \( f(x) = F'(x) \) and is therefore a derivative.
+    \end{proof}
+    
+    \item 
+    \begin{enumerate}
+        \item Let \( f(x) = \vert x \vert \) and define \( F(x) = \int_{-1}^x f \). Find a formula for \( F(x) \) for all \( x \). Where is \( F \) continuous? Where is \( F \) differentiable? Where does \( F'(x) = f(x) \)?
+        
+        \item Repeat for the function
+        \[
+        f(x) = \begin{cases} 1 & \text{if } x < 0 \\ 2 & \text{if } x \geq 0  \end{cases}
+        \]
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item We observe that if
+        \[
+        F(x) = \begin{cases} \frac{1}{2}-\frac{x^2}{2} & x<0 \\ \frac{1}{2}+\frac{x^2}{2} & x\geq 0 \end{cases}
+        \]
+        Then \( F(x) = \int_{-1}^x f \). It is obvious from that \( F \) is continuous on all of \( \mathbb{R} \). It can easily be shown that for all \( c \in \mathbb{R} \) we will have that \( F'(c) = c \), even at \( c = 0 \), and is thus differentiable everywhere.
+        
+        \item 
+    \end{enumerate}
+    \end{proof}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+\end{enumerate}

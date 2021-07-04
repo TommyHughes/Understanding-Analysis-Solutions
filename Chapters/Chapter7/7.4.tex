@@ -1,0 +1,205 @@
+\section*{7.4}
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item Let \( f \) be a bounded function on a set \( A \), and set 
+        \[
+        M = \sup\{ f(x): x \in A \}, \;\;\;\; m = \inf\{ f(x): x \in A \},
+        \]
+        \[
+        M' = \sup \{ \vert f(x) \vert: x \in A \}, \;\;\;\; m' = \inf\{ \vert f(x) \vert : x \in A \}
+        \]
+        Show that \( M-m \geq M'-m' \)
+        
+        \item Show that if \( f \) is integrable on the interval \( [a,b] \), then \( \vert f \vert \) is also integrable on this interval.
+        
+        \item Provide the details for the argument that in this case we have \( \vert \int_{a}^{b} f \vert \leq \int_{a}^{b} \vert f \vert \).
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item If \(M \) and \( m \) are either both nonnegative or both nonpositive, then we equality
+        \[
+        M-m = M'-m'
+        \]
+        On the other hand, if \( m < 0 < M \) then it follows 
+        \[
+        m' \leq M
+        \]
+        since
+        \[
+        M < m'
+        \]
+        would imply that there exists \( f(x) \) such that
+        \[
+        0 < f(x) \leq M < m'
+        \]
+        contradicting with \( m' \leq \vert f(x) \vert \). So, we then have that
+        \[
+        m < 0 < m' \leq M \leq M'
+        \]
+        If \( M = M' \) then clearly
+        \[
+        M-m = M' - m > M' - m'
+        \]
+        If \( M < M' \) then it is not too hard to show that \( M' = -m \). So
+        \[
+        M-m = M'+ M > M' - m' 
+        \]
+        Therefore,
+        \[
+        M-m \geq M'-m'
+        \]
+        
+        \item So for every \( \epsilon > 0 \) we have a partition so that
+        \[
+        \sum_k (M_k - m_k) \Delta x_k < \epsilon
+        \]
+        From (a), we know that \( M_k - m_k \geq M_k'-m_k' \) on each \( [x_{k-1},x_k] \). Thus
+        \[
+        \sum_k (M_k'-m_k')\Delta x_k \leq \sum_k (M_k - m_k) \Delta x_k < \epsilon
+        \]
+        Therefore, \( \vert f \vert \) is integrable on \( [a,b] \).
+        
+        \item We claim that \( \vert M \vert \leq M' \). To demonstrate, suppose \( M \geq 0 \). So \( f(x) \leq \vert f(x) \vert \leq M' \) and so \( M' \) is an upper bound. Since, in this case, \( \vert M \vert = M \) we would have \( \vert M \vert = M \leq M' \), since \( M \) is the least upper bound. If \( M < 0 \) then \( \vert M \vert = -M \). Futhermore, there exists \( f(x) \leq M \). So \(  \vert f(x) \vert = -f(x) \). Thus \( \vert M \vert = -M \leq -f(x) = \vert f(x) \vert \leq M' \). Therefore, \( \vert M \vert \leq M' \). Thus, for every partition we have
+        \[
+        \left| \sum_k M_k \Delta x_k \right| \leq \sum_k \left| M_k \right| \Delta x_k \leq \sum_k M' \Delta x_k
+        \]
+        Therefore, \( \vert \int_a^b f \vert \leq \int_a^b \vert f \vert \). 
+    \end{enumerate}
+    \end{proof}
+    
+    \item Show that if \( c \leq a \leq b \) and \( f \) is integrable on the interval \( [c,b] \), then it is still the case that
+    \[
+    \int_a^b f = \int_a^c f + \int_c^b f
+    \]
+    
+    \begin{proof}
+    If \( c \leq a \leq b \), then
+    \[
+    \int_a^c f + \int_c^b f = - \int_c^a f + \int_c^b f = -\int_c^a f + \int_c^a f + \int_a^b f = \int_a^b f
+    \]
+    \end{proof}
+    
+    \item Prove Theorem 7.4.4.
+    
+    \begin{proof}
+    Let \( \epsilon > 0 \) be given. Then, by our assumptions on \( f \) and \( f_n \) and Theorem 7.4.2 (i), we have
+    \begin{align*}
+        \left| \int_a^b f - \int_a^b f_n \right| &\leq \left| \int_a^b (f-f_n) \right|
+        \intertext{and by Theorem 7.4.2 (v)}
+        &\leq \int_a^b \vert f - f_n \vert 
+        \intertext{and by Theorem 7.4.2 (iv) and uniform convergence}
+        &\leq \int_a^b \frac{\epsilon}{b-a}
+        \intertext{and by Exercise 7.2.3}
+        &= \frac{\epsilon}{b-a}(b-a) \\
+        &= \epsilon
+    \end{align*}
+    \end{proof}
+    
+    \item Decide which of the following conjectures are true and supply a short proof. For those that are not true, give a counterexample.
+    \begin{enumerate}
+        \item If \( \vert f \vert \) is integrable on \( [a,b] \) then \( f \) is also integrable on this set.
+        \item Assume \( g \) is integrable and \( g \geq 0 \) on \( [a,b] \). If \( g(x) \geq 0 \) for an infinite number of points \( x \in [a,b] \), then \( \int g > 0 \).
+        \item If \( g \) is continuous on \( [a,b] \) and \( g \geq 0 \) with \( g(x_0) > 0 \) for at least one point \( x_0 \in [a,b] \), then \( \int_a^b g > 0 \).
+        \item If \( \int_a^b f > 0 \) there is an interval \( [c,d] \subseteq [a,b] \) and a \( \delta > 0 \) such that \( f(x) > \delta \) for all \( x \in [c,d] \). 
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item False. Let 
+        \[
+        f = \begin{cases} 1 & \text{ \( x \) is rational} \\ -1 & \text{ \( x \) is irrational} \end{cases}
+        \]
+        Notice on \( [0,1] \) we get that \( \vert f \vert = 1 \) and so \( \int_a^b \vert f \vert = (b-a) \). On the other hand, much like Dirichlet's function, \( f \) is not integrable on \( [0,1] \). 
+        
+        \item False. See Exercise 7.3.5
+        
+        \item This is true. By continuity of \( g \) on \( [a,b] \) it follows that there exists \( \delta > 0 \) such that \( \left| x - x_0 \right| < \delta \) implies
+        \[
+        \left| g(x) - g(x_0) \right| < \frac{g(x_0)}{2}
+        \]
+        Thus if we define
+        \[
+        f(x) = \begin{cases} \frac{g(x_0)}{2} & x \in (x-\delta, x+\delta) \\ 0 & \text{ elsewhere in } [a,b]\end{cases}
+        \]
+        then clearly
+        \[
+        \int_a^b f = g(x_0)\delta
+        \]
+        But \( f(x) \leq g(x) \) on \( [a,b] \). Thus
+        \[
+        0 < g(x_0)\delta = \int_a^b f \leq \int_a^b g
+        \]
+        
+        \item This is true, and we demonstrate by contrapositive. So for all \( [c,d] \subseteq [a,b] \) there exists \( x_0 \in [c,d] \) such that
+        \[
+        f(x_0) \leq 0
+        \]
+        Thus for every partition \( P \in \mathcal{P} \) there is \( x_k \in I_k \) such that
+        \[
+        f(x_k) \leq 0 
+        \]
+        and
+        \[
+        m_k \leq f(x_k) \leq M_k
+        \]
+        Thus
+        \[
+        L(f,P) \leq \sum_k f(x_k)\Delta x_k \leq U(f,P)
+        \]
+        However, since \( f(x_k) \leq 0 \) it follows \( \sum_k f(x_k) \Delta x_k \leq 0 \). Thus by integrability of \( f \) and the squeeze theorem, it follows that
+        \[
+        \int_a^b f \leq 0
+        \]
+    \end{enumerate}
+    \end{proof}
+    
+    \item Let \( f \) and \( g \) be integrable functions on \( [a,b] \).
+    \begin{enumerate}
+        \item Show that if \( P \) is any partition of \( [a,b] \), then
+        \[
+        U(f+g,P) \leq U(f,P) + U(g,P)
+        \]
+        Provide a specific example where the inequality is strict. What does the corresponding inequality for lower sums look like?
+        
+        \item Prove Theorem 7.4.2 (i)
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Without going through the details we simply observe that
+        \[
+        U(f+g,P) \leq U(f,P) + U(g,P)
+        \]
+        holds since \( \sup f+g \leq \sup f + \sup g \) which is true since \( f(x) + g(x) \leq \sup_x f(x) + \sup_x g(x) \). A simple example would be \( [a,b] = [0,1] \), \( f= \sin \), and \( g= x^2 \). Similar reasoning shows that
+        \[
+        L(f,P) + L(g,P) \leq L(f+g, P)
+        \]
+        
+        \item By the above we have
+        \[
+        L(f,P)+L(g,P) \leq L(f+g,P) \leq U(f+g,P) \leq U(f,P) + U(g,P)
+        \]
+        By integrability of \( f \) and \( g \) it follows that for every \( \epsilon > 0 \) there exists a \( P \in \mathcal{P} \) such that 
+        \[
+        L(f,P)+L(g,P), U(f,P) + U(g,P) \in V_{\epsilon} \left(\int_a^b f + \int_a^b g\right)
+        \]
+        which, by the above inequality, implies the same for \( L(f+g,P) \) and \( U(f+g,P) \). Therefore
+        \[
+        \int_a^b f + \int_a^b g = \int_a^b f+g
+        \]
+    \end{enumerate}
+    \end{proof}
+    
+    \item 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+\end{enumerate}

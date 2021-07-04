@@ -1,0 +1,100 @@
+\section*{4.5}
+\begin{enumerate}
+    \item Show how the Intermediate Value Theorem follows as a corollary to Theorem 4.5.2.
+    
+    \begin{proof}
+    Let \( f:[a,b] \rightarrow \mathbb{R} \) be continuous and \( L \) a real number between \( f(a) \) and \( f(b) \). Since \( [a,b] \) is connected and \( f \) is continuous, by Theorem 4.5.2 we have that \( f([a,b]) \) is connected. Since every connected set in \( \mathbb{R} \) is an interval it follows that \( f([a,b]) \) is also an interval. Since \( f(a), f(b) \in f([a,b]) \) and \( f([a,b]) \) is an interval, it follows that every element between \( f(a) \) and \( f(b) \) is in \( f([a,b]) \). In particular \( L \in f([a,b]) \). Thus there \( c \in (a,b) \) such that \( f(c) = L \).  
+    \end{proof}
+    
+    \item Decide on the validity of the following conjectures.
+    \begin{enumerate}
+        \item Continuous functions take bounded open intervals to bounded open intervals.
+        \item Continuous functions take bounded open intervals to open sets.
+        \item Continuous functions take bounded closed intervals to bounded closed intervals.
+    \end{enumerate}
+    \begin{proof}
+    \begin{enumerate}
+        \item This is false. \( f(x) = x^{2} \) is continuous and takes \( (-1,1) \) to \( [0,1) \).
+        \item This is false. See the above.
+        \item This is true. Notice a bounded closed interval is compact. By Theorem 4.5.2 we know that that the image, by a continuous function, of a bounded closed interval must also be an interval. However, from Theorem 4.4.2 it must also be compact which implies that it must be bounded and closed. Therefore, it must be a bounded and closed interval. 
+    \end{enumerate}
+    \end{proof}
+    
+    \item Is there a continuous function on all of \( \mathbb{R} \) with range \( f(\mathbb{R}) \) equal to \( \mathbb{Q} \)?
+    \begin{proof}
+    No. If \( f \) is continuous on \( \mathbb{R} \) and \( f(\mathbb{R}) = \mathbb{Q} \), then there exist \( a,b \in \mathbb{R} \) such that  \( f(a) = 0 \) and \( f(b) =1 \). Suppose \( a < b \). Then \( f([a,b]) \subset \mathbb{Q} \) must be connected. However, we know that there exists \( y \in \mathbb{R} \setminus \mathbb{Q} \) such that \( 0 < y < 1 \). Thus, there must exist \( c \in (a,b) \) such that \( f(c) = y \) contradicting with \( f(\mathbb{R}) = \mathbb{Q} \). A similar argument demonstrates the same holds when \( b < a \).
+    \end{proof}
+    
+    \item A function \( f \) is increasing on \( A \) if \( f(x) \leq f(y) \) for all \( x < y \) in \( A \). Show that the Intermediate Value Theorem does have a converse if we assume \( f \) is increasing on \( [a,b] \).
+    
+    \begin{proof}
+    Let \( f \) have the IVP and be increasing on \( [a,b] \) and let \( \epsilon > 0 \) be given.
+    \begin{enumerate}
+    
+    \item \underline{Continuity at \( a \)}: Let \( y \in (a,b] \). If
+    \[
+    f(y) < f(a) + \epsilon
+    \]
+    then, by \( f \) increasing, \( a < z < y \) implies
+    \[
+    f(a) \leq f(z) \leq f(y) < f(a) + \epsilon
+    \]
+    so that
+    \[
+    \vert f(z) - f(a) \vert < \epsilon
+    \]
+    On the other hand, if \( f(y) \geq f(a) + \epsilon \) then, by IVP, there exists \( c \in (a,y) \) such that \( f(c) = f(a) + \frac{\epsilon}{2} < f(a) + \epsilon \). Then, by our previous argument, we will have that \( a < z < c \) implies that \( \vert f(z) - f(a) \vert < \epsilon \). Therefore, \( f \) is continuous at \( a \). 
+    
+    \item \underline{Continuity at \( b \)}: Extremely similar to the above.
+    
+    \item \underline{Continuity on \( (a,b) \)}: Let \( c \in (a,b) \). Notice \( f \) is then increasing and has the IVP on \( [a,c] \). So following from (b), we will get that there exists \( \delta_{1} > 0 \) such that for all \( x \) such that \( x < c \) and \( c-x < \delta_{1} \) we will have \( \vert f(x) - f(c) \vert < \epsilon \). Similarly \( f \) is increasing and has the IVP on \( [c,b] \). So following form (a), we will get that there exists \( \delta_{2} > 0 \) such that for all \( x \) such that \( c < x \) and \( x-c < \delta_{2} \) we will have \( \vert f(x) - f(c) \vert < \epsilon \). Thus if \( \delta = \min\{\delta_{1},\delta_{2}\} \) then \( \vert x - c \vert < \delta \) implies that \( \vert f(x) - f(c) \vert < \epsilon \). Thus \( f \) is continuous at \( c \).
+    \end{enumerate}
+    Therefore, altogether, we have that \( f \) is continuous on \( [a,b] \).
+    \end{proof}
+    
+    \item Finish the proof of the Intermediate Value Theorem using the Axiom of Completeness started previously.
+    \begin{proof}
+    Continuing the argument, we first show that \( f(c) \leq 0 \). We observe that either \( c \in K \) or, by \( c \) being the supremum of K, there is \( (x_{n}) \subset K \) such that \( x_{n} \rightarrow c \). The former implies that \( f(c) \leq 0 \). On the other hand, in the latter case, by compactness of \( [a,b] \), it follows then that \( c \in [a,b] \) and so \( f(c) \) is well-defined. By continuity of \( f \), we get \( f(x_{n}) \rightarrow f(c) \). Now, since \( f(x_{n}) \leq 0 \) for all \( n \in \mathbb{N} \), it follows from the Order Limit Theorem that \( f(c) \leq 0 \). Thus, in all cases \( f(c) \leq 0 \). Now, since \( f(b) > 0 \), it follows that \( c \neq b \). Furthermore for all \( x \in (c,b] \) we have \( f(x) > 0 \). If \( (y_{n}) \subset (c,b] \) such that \( y_{n} \rightarrow c \), then, again, by continuity of \( f \), we must have \( f(y_{n}) \rightarrow f(c) \). This then implies that \( f(c) = 0 \), for otherwise we would have that \( f(y_{n}) > 0 \) for all \( n \) and \( \lim_{n \rightarrow \infty} f(y_{n}) = f(c) < 0 \) contradicting with the Order Limit Theorem. Therefore, \( f(c) = 0 \). Now then, if \( g: [a,b] \rightarrow \mathbb{R} \) is continuous on \( [a,b] \) and \( L \in (g(a),g(b)) \) then, by the previous argument, there exists \( c \) such that \( g(c) - L = 0 \). Thus there exists \( c \) such that \( g(c) = L \). This also holds when \( g(b) < g(a) \).
+    \end{proof}
+    
+    \item Finish the proof of the Intermediate Value Theorem using the Nested Interval Property started previously.
+    \begin{proof}
+    Continuing the argument, we denote each of the intervals by \( I_{n} = [x_{n},y_{n}] \). By the NIP, we must have that there exists \( c \in \cap_{n=0}^{\infty} I_{n}\). Furthermore, \( x_{n},y_{n} \rightarrow c \). By continuity of \( f \) we have then that \( \lim_{n \rightarrow \infty} f(x_{n}) = \lim_{n \rightarrow \infty} f(y_{n}) = f(c) \).  Since \( f(x_{n}) < 0 \) for all \( n \) and \( f(y_{n}) \geq 0 \) for all \( n \), it follows by the Order Limit Theorem, that \( f(c) \geq 0 \) and \( f(c) \leq 0 \). Therefore \( f(c) = 0 \). Thus, if \( g: [a,b] \rightarrow \mathbb{R} \) is continuous on \( [a,b] \) and \( L \in (g(a),g(b)) \) it follows from the previous argument that there exists \( c \) such that \( g(c) - L = 0 \). Therefore, there exists \( c \in (a,b) \) such that \( g(c) = L \). The same holds when \( g(b) < g(a) \). 
+    \end{proof}
+    
+    \item Let \( f \) be a continuous function on the closed interval \( [0,1] \) with range also contained in \( [0,1] \). Prove that \( f \) must have a fixed point; that is, show \( f(x) = x \) for at least one value of \( x \in [0,1] \).
+    
+    \begin{proof}
+    Notice that \( f(0) \geq 0 \) and \( f(1) \leq 1 \). Define \( g(x) = x - f(x) \). Clearly \( g(0) = 0 - f(0) \leq 0 \) and \( g(1) = 1 - f(1) \geq 0 \). Moreover, by the Algebraic Continuity Theorem, we know that \( g \) is continuous on \( [0,1] \). Thus by the Intermediate Value Theorem, there exists \( c \in (0,1) \) such that \( g(c) = 0 \). That is, there is \( c \in (0,1) \) such that \( c - f(c) = 0 \), which, in turn, implies that \( c = f(c) \). Therefore, \( f \) has a fixed point in \( [0,1] \).
+    \end{proof}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+\end{enumerate}

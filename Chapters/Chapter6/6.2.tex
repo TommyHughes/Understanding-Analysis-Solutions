@@ -1,0 +1,461 @@
+\section*{6.2}
+\begin{enumerate}
+    \item Let
+    \[
+    f_n(x) = \frac{nx}{1+nx^2}
+    \]
+    \begin{enumerate}
+        \item Find the pointwise limit of \( (f_n) \) for all \( x \in (0, \infty) \).
+        \item Is the convergence uniform on \( (0, \infty) \)?
+        \item Is the convergence uniform on \( (0,1) \)?
+        \item Is the convergence uniform on \( (1, \infty) \)?
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item
+        \[
+        \lim_{n \rightarrow \infty} \frac{nx}{1+nx^2} = \lim_{n \rightarrow \infty} \frac{\frac{1}{n}}{\frac{1}{n}} \frac{nx}{1+nx^2} = \lim_{n \rightarrow \infty} \frac{x}{\frac{1}{n} + x^2} = \frac{1}{x}
+        \]
+        
+        \item No, convergence is not uniform on \( (0, \infty) \). Notice
+        \begin{align*}
+            \left| \frac{nx}{1 + nx^2} - \frac{1}{x} \right| &= \left| - \frac{1}{x+nx^3} \right| \\
+            \intertext{and on \( (0, \infty) \) we get} \\
+            &= \frac{1}{x+nx^3}
+        \end{align*}
+        So, given \( \epsilon > 0 \)
+        \[
+        \left| \frac{nx}{1+nx^2} - \frac{1}{x} \right| < \epsilon \iff \frac{1-\epsilon x}{\epsilon x^3} < n
+        \]
+        Clearly there is no \( n \) satisfying this for all \( x \in (0, \infty) \)
+        
+        \item Since 
+        \[
+        \lim_{x \rightarrow 0^+} \frac{1-\epsilon x}{\epsilon x^3} = \infty
+        \]
+        then, together with the above observations, it becomes clear that convergence is still not uniform on \( (0,1) \). 
+        
+        \item Notice that, on \( (1, \infty) \) we have
+        \[
+        \frac{1-\epsilon x}{\epsilon x^3} \leq \frac{1-\epsilon x}{\epsilon} \leq \frac{1}{\epsilon} 
+        \]
+        and there is indeed and \( N \in \mathbb{N} \) so that 
+        \[
+        \frac{1}{\epsilon} < N
+        \]
+        Therefore, there is an \( N \) such that, for all \( x \in (1, \infty) \) and for all \( n \geq N \) we have
+        \[
+        \left| \frac{nx}{1+nx^2} - \frac{1}{x} \right| < \epsilon
+        \]
+        Therefore, convergence is uniform on \( (1, \infty) \).
+    \end{enumerate}
+    \end{proof}
+    
+    \item Let
+    \[
+    g_n(x) = \frac{nx+ \sin(nx)}{2n}
+    \]
+    Find the pointwise limit of \( (g_n) \) on \( \mathbb{R} \). Is the convergence uniform on \( [-10,10] \)? Is the convergence uniform on all of \( \mathbb{R} \)?
+    
+    \begin{proof}
+    To find the pointwise limit, we examine
+    \[
+    \lim_{n \rightarrow \infty} \frac{nx+ \sin(nx)}{2n} = \lim_{n \rightarrow \infty} \frac{x}{2} + \frac{1}{2} \frac{\sin(nx)}{n} = \frac{x}{2}
+    \]
+    which is, indeed, well-defined on \( \mathbb{R} \). To determine where convergence is uniform, we consider
+    \[
+        \left| \frac{nx+\sin(nx)}{2n} - \frac{x}{2} \right| = \left| \frac{\sin(nx)}{2n} \right| \leq \frac{1}{2n} 
+    \]
+    Clearly, regardless of \( x \), for \( n \) large enough, we will have that, for a given \( \epsilon > 0 \)
+    \[
+    \frac{1}{2n} < \epsilon
+    \]
+    Thus convergence is uniform on all of \( \mathbb{R} \)
+    \end{proof}
+    
+    \item Consider the sequence of functions
+    \[
+    h_n(x) = \frac{x}{1+x^n}
+    \]
+    over the domain \( [0, \infty) \).
+    \begin{enumerate}
+        \item Find the pointwise limit of \( (h_n) \) on \( [0,\infty) \).
+        \item Explain how we know that the convergence \emph{cannot} be uniform on \( [0,\infty) \)?
+        \item Choose a smaller set over which the convergence is uniform and supply an argument to show that this is indeed the case.
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item If \( x \in (1, \infty) \) then
+        \[
+        \lim_{n \rightarrow \infty} \frac{x}{1+x^n} = \lim_{n \rightarrow \infty} \frac{1}{\frac{1}{x}+ x^{n-1}} = 0
+        \]
+        when \( x=1 \) we have
+        \[
+        \lim_{n \rightarrow \infty} \frac{1}{1+1^n} = \lim_{n \rightarrow \infty} \frac{1}{2} = \frac{1}{2}
+        \]
+        If \( x \in [0,1) \) then
+        \[
+        \lim_{n\rightarrow \infty} \frac{x}{1+x^n} = x
+        \]
+        Thus, our pointwise limit is given by
+        \[
+        h(x) = \begin{cases} x & 0 \leq x < 1 \\ \frac{1}{2} & x = 1 \\ 0 & x > 1 \end{cases}
+        \]
+        
+        \item Observe that \( h(x) \) is not continuous at \( x =1 \) while \( h_n(x) \) is. Therefore, by negation of the consequent and Theorem 6.2.6, we get \( h_n \) does not converge to \( h \) uniformly on \( [0,\infty) \). 
+        
+        \item Notice when we take our set to simply be \( \{ 1 \} \) pointwise convergence of \( h_n \) implies uniform convergence of \( h_n \). 
+    \end{enumerate}
+    \end{proof}
+    
+    \item For each \( n \in \mathbb{N} \), find the points on \( \mathbb{R} \) where the function \( f_n(x) = \frac{x}{1+nx^2} \) attains its maximum and minimum values. Use this to prove \( (f_n) \) converges uniformly on \( \mathbb{R} \). What is the limit function?
+    
+    \begin{proof}
+    To find the extrema of \( f_n \) we utilize the Interior Extremum Theorem. We first observe that
+    \[
+    f_n'(x) = \frac{1+nx^2-2nx^2}{(1+nx)^2}
+    \]
+    and consider when
+    \begin{align*}
+    0 &= \frac{1+nx^2-2nx^2}{(1+nx)^2} \\
+    0 &= 1-nx^2 \\
+    \pm \frac{1}{\sqrt{n}} &= x
+    \end{align*}
+    Thus, \( \pm \frac{1}{\sqrt{n}} = x \) are the points on \( \mathbb{R} \) where \( f_n \) attains its maximum and minimum values. Notice the maximum and the minimum are actually attained since \( \left[ -\frac{1}{\sqrt{n}}-1, \frac{1}{\sqrt{n}}+1 \right] \) is compact and \( f_n \) is continuous and differentiable there. Plugging in the critical values back into \( f_n \) yields
+    \[
+    \vert f_n(x) \vert \leq \frac{1}{2 \sqrt{n}}
+    \]
+    This then implies that \( \lim_{n \rightarrow \infty} \sup \{\vert f_n(x) \vert: x \in \mathbb{R}\} = 0 \). Thus, given \( \epsilon > 0 \), there exists \( N \in \mathbb{N} \) such that 
+    \[
+    \vert f_n(x) - f_m(x) \vert < \epsilon
+    \]
+    whenever \( n,m \geq N \). Thus, by the Cauchy Criterion for Uniform Convergence, it follows that \( (f_n) \) converges uniformly on \( \mathbb{R} \). In particular, 
+    \[
+    \lim_{n \rightarrow \infty} f_n(x) = 0
+    \]
+    Thus, the limit function is given by \( f(x) = 0 \). 
+    \end{proof}
+    
+    \item For each \( n \in \mathbb{N} \), define \( f_n \) on \( \mathbb{R} \) by
+    \[
+    f_n = \begin{cases} 1 & \text{ if } \vert x \vert \geq \frac{1}{n} \\ n\vert x \vert & \text{ if } \vert x \vert < \frac{1}{n}\end{cases}
+    \]
+    \begin{enumerate}
+        \item Find the pointwise limit of \( (f_n) \) on \( \mathbb{R} \) and decide whether or not the convergence is uniform.
+        \item Construct an example of a pointwise limit of a continuous function that converges everywhere on the compact set \([-5,5] \) to a limit function that is unbounded on this set.
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item At \( x = 0 \) we can see that 
+        \[
+        \lim_{n \rightarrow \infty} f_n(0) = \lim_{n \rightarrow \infty} n \vert 0 \vert = 0 
+        \]
+        Now, if \( x \neq 0 \) then, given \( \epsilon > 0 \), we can choose \( N \) such that 
+        \[
+        \frac{1}{N} \leq \vert x \vert
+        \]
+        so that \( \forall \: n \geq N \) we have
+        \[
+        \vert f_n(x) - 1 \vert = \vert 1 - 1 \vert = 0 < \epsilon
+        \]
+        Thus, for \( x \neq 0 \) we have that
+        \[
+        \lim_{ n \rightarrow \infty} f_n(x) = 1
+        \]
+        Thus, \( f_n \rightarrow f \) where
+        \[
+        f = \begin{cases} 0 & x =0 \\ 1 & \text{elsewhere} \end{cases}
+        \]
+        Clearly then, convergence of \( (f_n) \) is not uniform since \( f \) is not continuous. 
+        
+        \item \[
+        f = \begin{cases} 1 & \text{ if }\vert x \vert \geq \frac{1}{n} \\ n(n+1)\vert x \vert - n & \text{ if }\vert x \vert < \frac{1}{n} \end{cases}
+        \]
+    \end{enumerate}
+    \end{proof}
+    
+    \item Using the Cauchy Criterion for convergent sequences of real numbers, supply a proof of Theorem 6.2.5.
+    
+    \begin{proof}
+    
+    \( \Rightarrow \) : Let \( f_n \rightarrow f \) uniformly. This implies that for every \( x \in A \), we have that \( f_n(x) \) is a convergent sequence and therefore Cauchy. Moreover, by uniformity of convergence, we get that our choice of \( n \in \mathbb{N} \) depends only on \( \epsilon \). Therefore, given \( \epsilon \) there exists \( N \in \mathbb{N} \) such that whenever \( n,m \geq N \) we have
+    \[
+    \vert f_n(x) - f_m(x) \vert < \epsilon
+    \]
+    for every \( x \in A \).
+    
+    \(\Leftarrow \): Notice then for each \( x \in A \), \( (f_n(x)) \) forms a Cauchy sequence of real numbers and therefore converges to some real number. Let \( f(x) \) be defined so that for every \( x \in A \), \( f_n(x) \rightarrow f(x) \). Now,e wish to demonstrate that \( f_n \rightarrow f \) uniformly. So, let \( \epsilon > 0 \) be given. We can choose \( N \in \mathbb{N} \) so that for \( n,m \geq N \) we have
+    \[
+    \vert f_n(x) - f_m(x) \vert < \frac{\epsilon}{2}
+    \]
+    and
+    \[
+    \vert f_m(x) - f(x) \vert < \frac{\epsilon}{2}
+    \]
+    for all \( x \in A \). So
+    \[
+    \vert f_n(x) - f(x) \vert < \vert f_n(x) - f_m(x) \vert + \vert f_m(x) - f(x) \vert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+    \]
+    for all \( x \in A \). Therefore, \( f_n \rightarrow f \) uniformly on \( A \). 
+    \end{proof}
+    
+    \item Assume that \( (f_n) \) converges uniformly to \( f \) on \( A \) and that each \( f_n \) is uniformly continuous on \( A \). Prove that \( f \) is uniformly continuous on \( A \).
+    \begin{proof}
+    We can select \( N \in \mathbb{N} \) so that \( n \geq N \) implies
+    \[
+    \vert f_n(z) - f(z) \vert < \frac{\epsilon}{3}
+    \]
+    for all \( z \in A \). Furthermore, there is also \( \delta > 0 \) so that \( \vert x - y \vert < \delta \) implies, for a given \( n \geq N \), that
+    \[
+    \vert f_n(x) - f_n(y) \vert < \frac{\epsilon}{3}
+    \]
+    Therefore, for the same \( n \geq N \) and for \( \vert x - y \vert < \delta \) we have
+    \begin{align*}
+    \vert f(x) - f(y) \vert &\leq \vert f(x) - f_n(x) \vert + \vert f_n(x) - f(y) \vert \\
+    &\leq \vert f(x) - f_n(x) \vert +  \vert f_n(x) - f_n(y) \vert + \vert f_n(y)-f(y) \vert \\
+    &< \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} \\
+    &= \epsilon
+    \end{align*}
+    \end{proof}
+    
+    \item Decide which of the following conjectures are true and which are false. Supply a proof for those that are valid and a counterexample for each one that is not.
+    \begin{enumerate}
+        \item If \( f_n \rightarrow f \) pointwise on a compact set \( K \), then \( f_n \rightarrow f \) uniformly on \( K \).
+        
+        \item If \( f_n \rightarrow f \) uniformly on \( A \) and \( g \) is a bounded function on \( A \), then \( f_ng \rightarrow fg \) uniformly on \( A \).
+        
+        \item If \( f_n \rightarrow f \) uniformly on \( A \), and if each \( f_n \) is bounded on \( A \), then \( f \) must also be bounded.
+        
+        \item If \( f_n \rightarrow f \) uniformly on a set \( A \), and if \( f_n \rightarrow f \) uniformly on a set \( B \), then \( f_n \rightarrow f \) on \( A \cup B \). 
+        
+        \item If \( f_n \rightarrow f \) uniformly on an interval, and if each \( f_n \) is increasing, then \( f \) is also increasing.
+        
+        \item Repeat conjecture above, assuming only pointwise convergence.
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item This is not generally true. The example given on page 153 can be used as a counterexample. That is \( g_n(x) = x^n \) converges pointwise to 
+        \[
+        g(x) = \begin{cases} 0 & 0 \leq x < 1 \\ 1 & x = 1 \end{cases}
+        \]
+        but not uniformly on \( [0,1] \). 
+        
+        \item This is valid. By boundedness of \( g \) on \( A \), we have that \( \vert g(x) \vert \leq M \) for all \( x \in A \). Thus there exists \( N \in \mathbb{N} \) such that 
+        \[
+        \vert f_n(x)g(x) - f(x)g(x) \vert \leq \vert f_n(x) - f(x) \vert \vert g(x) \vert \leq \vert f_n(x) - f(x) \vert M < \frac{\epsilon}{M}M = \epsilon
+        \]
+        for all \( x \in A \).
+        
+        \item This is valid, for, suppose to the contrary, there is \( f_n \rightarrow f \) uniformly with each \( f_n \) bounded and \( f \) unbounded on \( A \). So, given \( \epsilon > 0 \), there exists \( N \) such that 
+        \[
+        \vert f_n(x) - f(x) \vert < \epsilon
+        \]
+        for all \( n \geq N \) and \( x \in A \). This is equivalent to
+        \[
+        f(x) -\epsilon < f_n(x) < f(x) + \epsilon
+        \]
+        for all \( n \geq N \) and \( x \in A \). Fixing \( n \geq N \), we have by boundedness of \( f_n \), there is \( M \) such that \( \vert f_n(x) \vert \leq M \) for all \( x \in A \). This is equivalent to saying
+        \[
+        -M < f_n(x) < M
+        \]
+        for all \( x \in A \). On the other hand, by unboundedness of \( f \), there is \( x \) such that \( \vert f(x) \vert > M+\epsilon \). So, either
+        \begin{align*}
+            M+\epsilon &< f(x)
+            \intertext{or}
+            M+ \epsilon &< -f(x)
+        \end{align*}
+        So, either
+        \begin{align*}
+            M &< f(x) - \epsilon
+            \intertext{or}
+            -M &> f(x) + \epsilon
+        \end{align*}
+        Therefore, either
+        \[
+        M < f(x) - \epsilon < f_n(x)
+        \]
+        or
+        \[
+        -M > f(x) + \epsilon > f_n(x)
+        \]
+        both of which contradict with \( -M < f_n(x) < M \). Therefore, \( f \) must  be bounded on \( A \). 
+        
+        \item This is valid. Letting the assumptions hold and letting \( \epsilon > 0 \) be given, we get that there is \( N_1 \) such that 
+        \[
+        \vert f_n(x) - f(x) \vert < \epsilon
+        \]
+        for all \( n \geq N_1 \) and for all \( x \in A \). Furthermore, there is \( N_2 \) such that
+        \[
+        \vert f_n(x) - f(x) \vert < \epsilon
+        \]
+        for all \( n \geq N_2 \) and for all \( x \in B \). Thus for \( N = max\{ N_1, N_2 \} \), we have that
+        \[
+        \vert f_n(x) - f(x) \vert 
+        \]
+        for all \( n \geq N \) and for all \( x \in A \cup B \). Therefore, \( f_n \rightarrow f \) uniformly on \( A \cup B \). 
+        
+        \item This is valid. To demonstrate, suppose to the contrary, that \( f_n \rightarrow f \) uniformly, where \( f_n \) is increasing, for every \( n \), and \( f \) is not. So there exist \( x_1 < x_2 \) such that \( f(x_1) > f(x_2) \) while, for all \( n \), we have \( f_n(x_1) \leq f_n(x_2) \). By uniformity, we have that there exists \( N \in \mathbb{N} \) such that for all \( n \geq N \) we have
+        \[
+        \vert f_n(x) - f(x) \vert < \frac{f(x_1)-f(x_2)}{2}
+        \]
+        for all \( x \) in the interval. In particular, this is true for \( x_1 \). Therefore, by the above inequality, along with the fact that \( f_n \) is increasing, we will have that
+        \[
+        \frac{f(x_2)+f(x_1)}{2} < f_n(x_1) \leq f_n(x_2)
+        \]
+        and therefore, that
+        \[
+        \frac{f(x_2)+f(x_1)}{2} < f_n(x_2)
+        \]
+        So it follows that
+        \[
+        \frac{f(x_1)-f(x_2)}{2} < f_n(x_2) - f(x_2)
+        \]
+        which implies that
+        \[
+        \vert f_n(x_2) - f(x_2) \vert > \frac{f(x_1)-f(x_2)}{2}
+        \]
+        contradicting with our assumption that \( f_n \rightarrow f \) uniformly. 
+        
+        \item This is valid. Again, suppose to the contrary, that \( f_n \rightarrow f \) pointwise with \( f_n \) increasing and \( f \) not increasing. So there exist \( x_1 < x_2 \) such that \( f(x_1) > f(x_2) \). Then, skipping some simple details, we can easily see that there exists \( N \in \mathbb{N} \) such that for all \( n \geq N \) we have
+        \[
+        \vert f_n(x_1) - f(x_1) \vert < \frac{f(x_1)-f(x_2)}{2} \text{ and } \vert f_n(x_2) - f(x_2) \vert < \frac{f(x_1)-f(x_2)}{2}
+        \]
+        Thus
+        \[
+        \frac{3f(x_2)-f(x_1)}{2} < f_n(x_2) < \frac{f(x_1)+f(x_2)}{2}
+        \]
+        and 
+        \[
+        \frac{f(x_1)+f(x_2)}{2} < f_n(x_1) < \frac{3f(x_1)-f(x_2)}{2}
+        \]
+        implying that
+        \[
+        f_n(x_2) < \frac{f(x_1)+f(x_2)}{2} < f_n(x_1)
+        \]
+        Contradicting with our assumption that \( f_n \) was increasing. 
+    \end{enumerate}
+    \end{proof}
+    
+    \item Assume \( (f_n) \) converges uniformly to \( f \) on a compact set \( K \), and let \( g \) be a continuous function on \( K \) satisfying \( g(x) \neq 0 \). Show \( (f_n/g) \) converges uniformly on \( K \) to \( f/g \).
+    
+    \begin{proof}
+    Let the assumptions hold. Since \( g \) is continuous on \( K \), which is compact, it follows that \( g(K) \) is bounded. Therefore, since we also have that \( g(x) \neq 0 \) it follows that there exist \( S \geq M > 0 \) such that
+    \[
+    M \leq \vert g(x) \vert \leq S
+    \]
+    for all \( x \in K \). Now let \( \epsilon > 0 \) be given. By uniform convergence of \( f_n \) it follows that there exists \( N \in \mathbb{N} \) such that \( n \geq N \) implies
+    \[
+    \vert f_n(x) - f(x) \vert < \epsilon M
+    \]
+    for all \( x \in K \). Therefore, for \( n \geq N \) we have
+    \[
+    \left| \frac{f_n(x)-f(x)}{g(x)} \right| = \frac{\vert f_n(x) - f(x) \vert}{\vert g(x) \vert} \leq \frac{\vert f_n(x) - f(x) \vert}{M} < \frac{\epsilon M}{M} = \epsilon
+    \]
+    for all \( x \in K \). Therefore, \( \frac{f_n}{g} \rightarrow \frac{f}{g} \) uniformly on \( K \). 
+    \end{proof}
+    
+    \item Let \( f \) be uniformly continuous on all of \( \mathbb{R} \), and define a sequence of functions by \( f_n(x) = f\left(x+\frac{1}{n}\right) \). Show that \( f_n \rightarrow f \) uniformly. Give an example to show that this proposition fails if \( f \) is only assumed to be continuous and not uniformly continuous on \( \mathbb{R} \).
+    
+    \begin{proof}
+    Since \( f \) is uniformly continuous on \( \mathbb{R} \) it follows that, given \( \epsilon > 0 \), there exists \( \delta > 0 \) such that
+    \[
+    \vert f(x) - f(y) \vert < \epsilon
+    \]
+    whenever \( \vert x - y \vert < \delta \). So, for all \( n \geq N \), where \( \frac{1}{N} < \delta \), we have that \( \vert x+ \frac{1}{n} - x \vert = \vert \frac{1}{n} \vert < \delta \) and therefore that
+    \[
+    \vert f_n(x) - f(x) \vert = \vert f\left( x+ \frac{1}{n} \right) - f(x) \vert < \epsilon
+    \]
+    Therefore, \( f_n \rightarrow f \) uniformly on \( \mathbb{R} \). On the other hand we see this fails to be generally true if \( f \) is simply continuous on \( \mathbb{R} \). Consider \( f(x) = x^2 \), which is continuous on \( \mathbb{R} \) but not uniformly continuous on \( \mathbb{R} \). So, if \( \epsilon = 1 \), then, if
+    \[
+    \vert f_n(x) - f(x) \vert < 1
+    \]
+    then we must have
+    \begin{align*}
+        \left| \left(x+\frac{1}{n}\right)^2 - x^2 \right| &< 1 \\
+        \left| \frac{2xn+1}{n^2} \right| &< 1
+    \end{align*}
+    and so 
+    \[
+    -1 < \frac{2xn+1}{n^2} < 1
+    \]
+    \[
+    -n(n+2x) < 1 < n(n-2x)
+    \]
+    implying that the choice of \( n \) used to satisfy the above will depend on \( x \). Therefore, \( f_n \) fails to converge uniformly to \( f \). 
+    \end{proof}
+    
+    \item Assume \( (f_n) \) and \( (g_n) \) are uniformly convergent sequences of functions.
+    \begin{enumerate}
+        \item Show that \( (f_n+g_n) \) is a uniformly convergent sequence of functions.
+        
+        \item Give an example to show that the product \( (f_ng_n) \) may not converge uniformly.
+        
+        \item Prove that if there exists an \( M > 0 \) such that \( \vert f_n \vert \leq M \) and \( \vert g_n \vert \leq M \) for all \( n \in \mathbb{N} \), then \( (f_ng_n) \) does converge uniformly.
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item We demonstrate that \( (f_n+g_n) \) is Cauchy. By the assumption that \( (f_n) \) and \( (g_n) \) are uniformly convergent, it follows that they are Cauchy. Therefore, given \( \epsilon > 0 \), there exists \( N \) such that for all \( n\geq m \geq N \) we have
+        \[
+        \vert f_n(x) - f_m(x) \vert < \frac{\epsilon}{2}
+        \]
+        and 
+        \[
+        \vert g_n(x) - g_m(x) \vert < \frac{\epsilon}{2}
+        \]
+        for all \( x \). Thus \( n \geq m \geq N \) implies that
+        \[
+        \vert f_n(x) + g_n(x) - f_m(x) - g_m(x) \vert \leq \vert f_n(x) - f_m(x) \vert + \vert g_n(x) - g_m(x) \vert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon 
+        \]
+        for all \( x \). Therefore \( (f_n+g_n) \) is Cauchy. Therefore, it is uniformly convergent. 
+        
+        \item Let
+        \begin{align*}
+            f_n(x) &= x + \frac{1}{n} \\
+            g_n(x) &= x+1 + \frac{1}{n}
+        \end{align*}
+        It is clear then that if \( f(x) = x \) and \( g(x) = x+1 \) then
+        \begin{align*}
+            f_n(x) &= f\left(x + \frac{1}{n}\right) \\
+            g_n(x) &= g\left(x + \frac{1}{n}\right)
+        \end{align*}
+        Since it is clear that \( f \) and \( g \) are uniformly continuous on \( \mathbb{R} \), then it follows from the previous exercise that \( f_n \rightarrow f \) and \( g_n \rightarrow g \) uniformly on \( \mathbb{R} \). Now, if \( \epsilon = 1 \) then 
+        \[
+        \vert (f_ng_n)(x) - (fg)(x) \vert < 1 
+        \]
+        for every \( n \geq N \) for some \( N \) and for every \( x \in \mathbb{R} \) will imply that
+        \[
+        \left| \frac{2xn + n + 1}{n^2} \right| < 1 
+        \]
+        which, in turn, will imply that
+        \[
+        (-n)(n+2x+1) < 1 < n(n-2x-1)
+        \]
+        implying that \( N \) will depend on the value of \( x \). Therefore, \( f_ng_n \) will not converge to \( fg \) uniformly on \( \mathbb{R} \).
+        
+        \item So we suppose that \( f_n \) and \( g_n \) are uniformly convergent sequences such that, there exists \( M > 0 \) such that \( \vert f_n \vert < M \) and \( \vert g_n \vert < M \) for all \( n \in \mathbb{N} \). So there exists \( N \in \mathbb{N} \) such that for all \( n \geq m \geq N \) we will 
+        \[
+        \vert f_n(x) - f_m(x) \vert < \frac{\epsilon}{2M} 
+        \]
+        and 
+        \[
+        \vert g_n(x) - g_m(x) \vert < \frac{\epsilon}{2M}
+        \]
+        for all \( x \). Thus for all \( n \geq m \geq N \) we will have
+        \begin{align*}
+            \vert (f_ng_n)(x) - (f_mg_m)(x) \vert &= \vert (f_ng_n)(x) - (f_mg_n)(x) + (f_mg_n)(x) - (f_mg_m)(x) \vert \\
+            &\leq \vert (f_ng_n)(x) - (f_mg_n)(x) \vert + \vert (f_mg_n)(x) - (f_mg_m)(x) \vert \\
+            &= \vert f_n(x) - f_m(x) \vert \vert g_n(x) \vert + \vert f_m(x) \vert  \vert g_n(x) - g_m(x) \vert \\
+            &< \frac{\epsilon}{2M}M + M \frac{\epsilon}{2M} \\
+            &= \epsilon 
+        \end{align*}
+    \end{enumerate}
+    \end{proof}
+    
+    
+    
+\end{enumerate}

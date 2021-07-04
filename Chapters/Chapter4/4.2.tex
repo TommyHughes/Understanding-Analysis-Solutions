@@ -1,0 +1,297 @@
+\section*{4.2}
+\begin{enumerate}
+    \item Use Definition 4.2.1 to supply a proof for the following statements
+    \begin{enumerate}
+        \item \( \lim_{x\rightarrow 2} 2x+4=8 \)
+        
+        \item \( \lim_{x \rightarrow 0} x^{3} = 0 \)
+        
+        \item \( \lim_{x \rightarrow 2} x^{3} = 8 \)
+        
+        \item \( \lim_{x \rightarrow \pi} [[x]] = 3 \) where \( [[x]] \) denotes the greatest integer less than or equal to \( x \). 
+    \end{enumerate}
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( \epsilon > 0 \) be given. Choose \( \delta = \frac{\epsilon}{2} \). So \( \vert x - 2 \vert < \delta \) implies
+        \[
+            \vert 2x+4-8 \vert = \vert 2x -4 \vert = 2 \vert x - 2 \vert < 2 \frac{\epsilon}{2} = \epsilon
+        \]
+        as desired.
+    
+    \item Let \( \epsilon > 0 \) be given. Choose \( \delta = \sqrt[3]{\epsilon} \) so that \( \vert x \vert < \delta \) implies
+    \[
+    \vert x^{3} \vert = \vert x \vert \vert x \vert \vert x \vert < \delta^{3} = \sqrt[3]{\epsilon}^{3} = \epsilon
+    \]
+    as desired.
+    
+    \item Let \( \epsilon > 0 \) be given. We note that that \( x^{3} - 8 = (x-2)(x^{2}+2x+4) \). Thus, if we have that \( \vert x - 2 \vert < 1 \) then it follows that \( 7 < x^{2}+2x+4 < 19 \). So, by chosing \( \delta = \min\{ 1, \frac{\epsilon}{19} \} \) we get
+    \[
+    \vert x^{3} - 8 \vert = \vert x-2 \vert \vert x^{2} + 2x+4 \vert < \frac{\epsilon}{19} 19 = \epsilon
+    \]
+    as desired.
+    
+    \item Let \( \epsilon > 0 \) be given. If we choose x so that \( \vert x - \pi \vert < 0.01 \) then \( [[x]] = 3 \). Thus
+    \[
+    \vert [[x]] - 3 \vert = 0 < \epsilon
+    \]
+    as desired.
+    \end{enumerate}
+    \end{proof}
+    
+    \item Assume a particular \( \delta > 0 \) has been constructed as a suitable response to a particular \( \epsilon \) challenge. Then, any \textit{smaller} \( \delta \) will also suffice.
+    
+    \item Use Corollary 4.2.5 to show that each of the following limits does not exist.
+    \begin{enumerate}
+        \item \( \lim_{x\rightarrow 0} \frac{\vert x \vert}{x} \) 
+        
+        \item \( \lim_{x \rightarrow 1} g(x) \) where \( g(x) \) is Dirichlet's function from 4.1.
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( (x_{n}) \) be the sequence defined by \( x_{n} = - \frac{1}{n} \) and \( (y_{n}) \) be the sequence defined by \( y_{n} = \frac{1}{n} \). Then \( \lim x_{n} = \lim y_{n} = 0 \) while \( x_{n} \neq 0 \) and \( y_{n} \neq 0 \). However, 
+        \[
+        \lim_{n\rightarrow \infty} \frac{\vert x_{n} \vert}{x_{n}} = \lim_{n \rightarrow \infty} \frac{\frac{1}{n}}{-\frac{1}{n}} = \lim_{n \rightarrow \infty} -1 = -1
+        \]
+        while
+        \[
+        \lim_{n\rightarrow \infty} \frac{\vert y_{n} \vert}{y_{n}} = \lim_{n \rightarrow \infty} \frac{\frac{1}{n}}{\frac{1}{n}} = \lim_{n \rightarrow \infty} 1 = 1
+        \]
+        which, by Corollary 4.2.5, implies that \( \lim_{x \rightarrow 0 } \frac{\vert x \vert}{x} \) does not exist.
+        
+        \item By density of \( \mathbb{Q} \) in \( \mathbb{R} \) we can select a sequence of rationals, \( (x_{n}) \), each different from \( 1 \), such that \( x_{n} \rightarrow 1 \). This will then imply that \( g(x_{n}) \rightarrow 0 \). On the other hand, if \( (y_{n}) \) is a sequence of irrationals, each different from \( 1 \), such that \( y_{n} \rightarrow 1 \), it follows that \( g(y_{n}) = 1 \). Therefore, by Corollary 4.2.5 we get that the limit does not exist. 
+    \end{enumerate}
+    \end{proof}
+    
+    \item Review the definition of Thomae's function \( t(x) \) from Section 4.1.
+    \begin{enumerate}
+        \item Construct three different sequences \( (x_{n}), (y_{n}) \), and \( (z_{n}) \), each of which converges to \( 1 \) without using the number \( 1 \) as a term in the sequence. 
+        
+        \item Now, compute \( \lim t(x_{n})\), \( \lim t(y_{n}) \), and \( \lim t(z_{n}) \). 
+        
+        \item Make an educated conjecture for \( \lim_{x \rightarrow 1} t(x) \), and use Definition 4.2.1B to verify the claim. 
+    \end{enumerate}
+    
+        \begin{lemma}
+    Let \( (x_{n}) \rightarrow x \) and \( \forall_{n} x_{n} \in \mathbb{Q} \). If \( x_{n} = \frac{a_{n}}{b_{n}} \) and \( \vert b_{n} \vert \not\rightarrow \infty \) then there exists \( N \) such that \( \forall_{n > N} x_{n} = x \). 
+    \end{lemma}
+    \begin{proof}
+    Let \( x_{n} = \frac{a_{n}}{b_{n}} \) with \( \vert b_{n} \vert \not\rightarrow \infty \). Since \( a_{n},b_{n} \in \mathbb{Z} \) it follows there exists \( \epsilon > 0 \) such that
+    \[
+    \vert a_{n} - b_{n} \vert < \epsilon
+    \]
+    iff \( a_{n} = b_{n} x \) iff \( \frac{a_{n}}{b_{n}} = x \). Notice then that this is equivalent to saying that 
+    \[
+    \vert a_{n} - b_{n}x \vert > \epsilon
+    \]
+    unless \( \frac{a_{n}}{b_{n}} = x \). Furthermore, since \( \vert b_{n} \vert \not\rightarrow \infty \) it follows there exists \( M > 0 \) such that 
+    \[
+    \vert b_{n} \vert < M
+    \]
+    for every \( n \in \mathbb{N} \). Thus 
+    \[
+    \vert x_{n} - x \vert = \vert \frac{a_{n}}{b_{n}} - x \vert = \frac{\vert a_{n} - b_{n}x \vert}{\vert b_{n} \vert} \geq \frac{\epsilon}{\vert b_{n} \vert} \geq \frac{\epsilon}{M}
+    \]
+    unless \( \frac{a_{n}}{b_{n}} = x \) . However, by assumption, we have that \( x_{n} \rightarrow x \). Thus, there exists \( N \in \mathbb{N} \) such that \( \forall \: n \geq N \) we have
+    \[
+    \vert x_{n} - x \vert < \frac{\epsilon}{M}
+    \]
+    Therefore, \( \forall n \geq N \) \(x_{n} = x \). 
+    \end{proof}
+    \begin{corollary}
+    Let \( x_{n} = \frac{a_{n}}{b_{n}}\in \mathbb{Q} \) for every \( n \) and \( x_{n} \rightarrow x \). If \( x \in \mathbb{R}\setminus\mathbb{Q} \), then \( \vert b_{n} \vert \rightarrow \infty \).  
+    \end{corollary}
+    \begin{proof}
+    Suppose, to the contrary, that \( \vert b_{n} \vert \not\rightarrow \infty \). Then, by the Lemma, there exists \( N \in \mathbb{N} \) such that \( x_{n} = x \) for every \( n \geq N \), contradicting with \( x_{n} \in \mathbb{Q} \) and \( x \not\in \mathbb{Q} \). 
+    \end{proof}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item \begin{align*}
+            x_{n} &= \frac{n+1}{n} \\
+            y_{n} &= \frac{n-1}{n} \\
+            z_{n} &= \frac{n + \sqrt{2}}{n}
+        \end{align*}
+        
+        \item \begin{align*}
+            \lim t(x_{n}) &= \lim t(\frac{n+1}{n})
+            \intertext{and since \( n \) and \( n+1 \) are relatively prime, it follows that this fraction is in lowest common terms, thus}
+            &= \lim \frac{1}{n} \\
+            &= 0 \\
+            \intertext{similarly, we get}
+            \lim t(y_{n}) &= 0 \\
+            \lim t(z_{n}) &= \lim t\left(\frac{n + \sqrt{2}}{n}\right) \\
+            \intertext{and since the sum of a rational and an irrational is irrational, it follows that}
+            &= \lim 0 \\
+            &= 0
+        \end{align*}
+        
+        \item Our conjecture will be that \( \lim_{x \rightarrow 1} t(x)=0 \). So, following the hint, let \( \epsilon > 0 \) be given and let \( S = \{x \in \mathbb{R} : t(x) \geq \epsilon  \} \). Now, if \( x \) is a limit point of \( S \), then there must be some \( x_{n} \rightarrow x \) where \( \forall_{n} x_{n} \in S\) and \( x_{n} \neq x \). This immediately implies that for all \( n \) we have \( x_{n} \in \mathbb{Q} \) for otherwise we would get that \( t(x_{n}) = 0 < \epsilon \) implying that \( x_{n} \not\in S \) which is contrary to our assumption. By our Lemma and Corollary, we know that either there exists an \( N \in \mathbb{N} \) such that \( \forall_{n \geq N} x_{n} = x \) or \( t(x_{n}) \rightarrow 0 \). In the former, we would have a contradiction in that, by assumption, \( x_{n} \neq x \) for all \( n \). In the latter, we would have a contradiction in that for \( n \) big enough, there would be \( m \) such that we would have \( t(x_{n}) = \frac{1}{m} < \epsilon \) contradicting with \( x_{n} \in S \) for every \( n \). Thus, it follows that \( S \) has no limit points. 
+        \medskip
+        
+        So, we wish to show that \( \forall \epsilon > 0 \), \( \exists \delta > 0 \) such that \( x \neq 1 \) and \( x \in V_{\delta}(1) \) implies that
+        \( t(x) \in V_{\epsilon}(0) \). If \( \epsilon \geq 1 \) then we are done since \(\forall_{x} t(x) \leq 1 \). Otherwise we have that \( 1 \in S \) and, by our previous argument, it follows that \( 1 \) is a isolated point of \( S \). Thus there exists \( \delta > 0 \) such that \( V_{\delta}(1) \cap S = \{ 1 \} \). Thus, for the same \( \delta \) we have that \( x \neq 1 \) and \( x \in V_{\delta}(1) \) implies that \( x \not\in S \) which, in turn, implies that \( t(x) < \epsilon \) which is equivalent to \( t(x) \in V_{\epsilon}(0) \). Thus, by Definition 4.2.1B, we get that \( \lim_{x \rightarrow 1} t(x) = 0 \). 
+    \end{enumerate}
+    \end{proof}
+    
+    \item \begin{enumerate}
+        \item Supply the details for how Corollary 4.2.4 part (ii) follows from the sequential criterion for functional limits in Theorem 4.2.3 and the Algebraic Limit Theorem for sequences proved in Chapter 2.
+        
+        \item Now, write another proof of Corollary 4.2.4 part (ii) directly from Definition 4.2.1 without using the sequential criterion in Theorem 4.2.3.
+        
+        \item Repeat (a) and (b) for Corollary 4.2.4 part (iii).
+    \end{enumerate}
+    \begin{proof}
+    \begin{enumerate}
+    \item From the sequential criterion for functional limits we know that \( \lim_{x \rightarrow c} [f(x) + g(x)] = L+M \) if and only if for every sequence \( x_{n} \rightarrow c \) such that \( x_{n} \neq c \) we must have \( \lim_{n\rightarrow \infty} [f(x_{n})+g(x_{n})]=L+M \). Now by assumption,
+    \[
+    f(x) \underset{x \rightarrow c}{\rightarrow} L
+    \]
+    \[
+    g(x) \underset{x \rightarrow c}{\rightarrow} M
+    \]
+    so, again, by the sequential criterion for functional limits, we get that for every \( x_{n} \rightarrow c \) such that \( x_{n} \neq c \) we must have \( \left( f(x_{n}) \right) \underset{n \rightarrow \infty}{\rightarrow} L \) and \( \left( g(x_{n}) \right) \underset{n \rightarrow \infty}{\rightarrow} M \). Thus from the Algebraic Limit Theorem from Chapter 2 we have that for all such sequences
+    \[
+    \lim_{n \rightarrow \infty} f(x_{n})+g(x_{n}) = L+M
+    \]
+    Thus, it follows that
+    \[
+    \lim_{x \rightarrow c} f(x) + g(x) = L+M 
+    \]
+    
+    \item Without utilizing the sequential criterion, we let \( \epsilon > 0 \) be given. By assumption, \( \lim_{x \rightarrow c} f(x) = L \) and \( \lim_{x \rightarrow c} g(x) = M \). Thus, for some \( \delta > 0 \), we can obtain
+    \[
+    \vert f(x) - L \vert < \frac{\epsilon}{2}
+    \]
+    and
+    \[
+    \vert g(x) - M \vert < \frac{\epsilon}{2}
+    \]
+    whenever \( \vert x - c \vert < \delta \). So \( \vert x - c \vert < \delta \) implies
+    \[
+    \vert f(x) + g(x) - L - M \vert \leq \vert f(x) - L \vert + \vert g(x) - M \vert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+    \]
+    Therefore, \( \lim_{x \rightarrow c} f(x) + g(x) = L + M \). 
+    
+    \item Using the sequential criterion is quite simple: whenever \( f \) and \( g \) converge to \( L \) and \( M \) respectively and \( x_{n} \rightarrow c \) with \( x_{n} \neq c \) we know, from Chapter 2, that
+    \[
+    \left( f(x_{n})g(x_{n}) \right) \underset{n \rightarrow \infty}{\rightarrow} LM
+    \]
+    Thus, by the sequential criterion we have
+    \[
+    \left( f(x)g(x) \right) \underset{x \rightarrow c}{\rightarrow} LM
+    \]
+    as desired.
+    \medskip
+    
+    Now, proceeding without the sequential criterion, let \( \epsilon > 0 \) be given. By assumption, \( f \underset{x \rightarrow c}{\rightarrow} L \) and \( g \underset{x \rightarrow c}{\rightarrow} M \). So, there exists \( \delta_{1} > 0 \) such that
+    \[
+    \vert f - L \vert < \frac{\epsilon}{2\vert M \vert}
+    \]
+    Furthermore, this is equivalent to saying
+    \[
+    \left| L- \frac{\epsilon}{2\vert M \vert} \right| < \left| f \right| < \left| L + \frac{\epsilon}{2 \vert M \vert } \right|
+    \]
+    To make matters simpler then, we conclude that there exists \( K > 0 \) such that \( \vert f(x) \vert < K \) whenever \( \vert x - c \vert < \delta_{1} \).  Similarly, there exist \( \delta_{2} > 0 \) such that
+    \[
+    \vert g(x) - M \vert < \frac{\epsilon}{2K}
+    \]
+    whenever \( \vert x - c \vert < \delta_{2} \). Thus we have then that if \( \delta = \min\{ \delta_{1},\delta_{2} \} \) then
+    \begin{align*}
+    \vert f(x)g(x) - LM \vert &= \vert f(x)g(x) + fM -fM - LM \vert \\
+    &\leq \vert f(x)g(x)-f(x)M \vert + \vert f(x)M - LM \vert \\
+    &= \vert f(x) \vert \vert g-M \vert + \vert f(x)-L \vert \vert M \vert \\
+    &< K \vert g(x)-M \vert + \vert f(x)-L \vert \vert M \vert \\
+    &< K \frac{\epsilon}{2K} + \frac{\epsilon}{2 \vert M \vert}\vert M \vert \\
+    &= \epsilon
+    \end{align*}
+    whenever \( \vert x - c \vert < \delta \). Therefore, \( \lim_{x \rightarrow c} f(x)g(x) = LM \).
+    \end{enumerate}
+    \end{proof}
+    
+    \item Let \( g: A \rightarrow \mathbb{R} \) and assume that \( f \) is a bounded function on \( A \subseteq \mathbb{R} \) (i.e. there exists \( M > 0 \) satisfying \( \vert f(x) \vert \leq M \) for all \( x \in A \)). Show that if \( \lim_{x \rightarrow c} g(x) = 0 \), then \( \lim_{x \rightarrow c} g(x)f(x) = 0 \) as well. 
+    
+    \begin{proof}
+    Given \( \epsilon > 0 \) there is \( \delta > 0 \) such that \( \vert x-c \vert < \delta \) implies
+    \[
+    \vert f(x) g(x) \vert = \vert f(x) \vert \vert g(x) \vert < M \vert g(x) \vert < M \frac{\epsilon}{M} = \epsilon
+    \]
+    Therefore, \( \lim_{x \rightarrow c} f(x)g(x) = 0 \) as desired.
+    \end{proof}
+    
+    \item \begin{enumerate}
+        \item The statement \( \lim_{ x \rightarrow 0 } \frac{1}{x^{2}} = \infty \) certainly makes intuitive sense. Construct a rigorous definition in the "challenge-response" style of Definition 4.2.1 for a limit statement of the form \( \lim_{x \rightarrow c} f(x) = \infty \) and use it to prove the previous statement.
+        
+        \item Now, construct a definition of the statement \( \lim_{x \rightarrow \infty} f(x) = L \). Show \( \lim_{x \rightarrow \infty} \frac{1}{x} = 0 \).
+        
+        \item What would a rigorous definition for \( \lim_{x \rightarrow \infty} f(x) = \infty \) look like? Give an example of such a limit.
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( f: A \rightarrow \mathbb{R} \) and let \( c \) be a limit point of \( A \). We say \( \lim_{x \rightarrow c} f(x) = \infty \) provided that, for all \( \epsilon > 0 \), there exists \( \delta > 0 \) such that whenever \( 0 < \vert x - c \vert < \delta \) (and \( x \in A \)) it follows that \( \vert f(x) \vert > \epsilon \). Now, to use this to demonstrate that \( \lim_{ x \rightarrow 0} = \infty \) we let \( \epsilon > 0 \) be given. Choosing \( x \) such that \( 0 < \vert x \vert < \sqrt{\frac{1}{\epsilon}} \) gives us that
+        \[
+        \left| \frac{1}{x^{2}} \right| = \frac{1}{x^{2}} = \frac{1}{\vert x \vert} \frac{1}{\vert x \vert} > \frac{1}{\sqrt{\frac{1}{\epsilon}}} \frac{1}{\sqrt{\frac{1}{\epsilon}}} = \frac{1}{\frac{1}{\epsilon}} = \epsilon 
+        \]
+        which then implies that \( \lim_{ x \rightarrow 0} \frac{1}{x^{2}} = \infty \).
+        
+        \item Let \( f: A \rightarrow \mathbb{R} \) and let there exist a sequence \( ( x_{n} ) \) such that \( x_{n} \in A \) and for every \( M > 0 \) there exists \( N \in \mathbb{N} \) such that \( x_{n} > M \) whenever \( n \geq N \). Then we say \( \lim_{ x \rightarrow \infty} f(x) = L \) when for every \( \epsilon > 0 \) there exists \( M > 0 \) such that whenever \( x > M \) (and \( x \in A\)) it follows that \( \vert f(x) - L \vert < \epsilon \). To demonstrate that \( \lim_{x\rightarrow \infty} \frac{1}{x} = 0 \) we let \( \epsilon > 0 \) be given. If \( x > \frac{1}{\epsilon} \) then
+        \[
+        \left| \frac{1}{x} \right| = \frac{1}{\vert x \vert} < \frac{1}{\frac{1}{\epsilon}} = \epsilon
+        \]
+        as desired.
+        
+        \item Let \( f: A \rightarrow \mathbb{R} \) and let there exist a sequence \( ( x_{n} ) \) such that \( x_{n} \in A \) and for every \( M > 0 \) there exists \( N \in \mathbb{N} \) such that \( x_{n} > M \) whenever \( n \geq N \). We say \( \lim_{x \rightarrow c} f(x) = \infty \) provided that, for all \( \epsilon > 0 \), there exists \( M > 0 \) such that whenever \( x > M\) (and \( x \in A \)) it follows that \( \vert f(x) \vert > \epsilon \). For example we claim \( \lim_{x \rightarrow \infty} x = \infty \). To demonstrate, let \( \epsilon > 0 \) be given. Then, selecting \( x > \epsilon \) we get that
+        \[
+        \vert x \vert = x > \epsilon
+        \]
+        Therefore, \( \lim_{x \rightarrow \infty} x = \infty \). 
+    \end{enumerate}
+    \end{proof}
+    
+    \item Assume \( f(x) \geq g(x) \) for all \( x \) in some set \( A \) on which \(f \) and \( g \) are defined. Show that for any limit point \( c \) of \( A \) we must have
+    \[
+    \lim_{x \rightarrow c} f(x) \geq \lim_{x \rightarrow c} g(x)
+    \]
+    
+    \begin{proof}
+    Suppose, to the contrary, that
+    \[
+    \lim_{x \rightarrow c} f(x) < \lim_{x \rightarrow c} g(x)
+    \]
+    while \( f(x) \geq g(x) \) for all \( x \in A \). Then, by the sequential criterion, we must have for every sequence \( (x_{n}) \) in \( A \) with \( x_{n} \neq c \) we get that
+    \[
+    f(x_{n}) \geq g(x_{n}) \;\; \forall n
+    \]
+    and
+    \[
+    \lim_{n \rightarrow \infty} f(x_{n}) < \lim_{n \rightarrow \infty} g(x_{n})
+    \]
+    contradicting with Theorem 2.3.4. Therefore
+    \[
+    \lim_{x \rightarrow c} f(x) \geq \lim_{x \rightarrow c} g(x)
+    \]
+    \end{proof}
+    
+    \item (Squeeze Theorem) Let \( f \), \( g \), and \( h \) satisfy \( f(x) \leq g(x) \leq h(x) \) for all \( x \) in some common domain \( A \). If \( \lim_{x\rightarrow c} f(x) = L = \lim_{x \rightarrow c} h(x) \) at some limit point \( c \) of \( A \), show \( \lim_{x \rightarrow c} g(x) = L \). 
+    
+    \begin{proof}
+    By the previous problem, we know that
+    \[
+    \lim_{x \rightarrow c} f(x) = L \leq \lim_{x \rightarrow c} g(x)
+    \]
+    and
+    \[
+    \lim_{x \rightarrow c} g(x) \leq \lim_{x \rightarrow c} h(x) = L
+    \]
+    So 
+    \[
+    L \leq \lim_{x \rightarrow c} g(x) \leq L
+    \]
+    implying then that
+    \[
+    \lim_{x \rightarrow c} g(x) = L
+    \]
+    as desired.
+    \end{proof}
+\end{enumerate}

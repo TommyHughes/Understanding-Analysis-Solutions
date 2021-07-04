@@ -1,0 +1,309 @@
+\section*{5.3}
+\begin{enumerate}
+    \item Recall from Exercise 4.4.9 that a function \( f: A \rightarrow \mathbb{R} \) is Lipschitz on \( A \) if there exists \( M > 0 \) such that
+    \[
+    \left| \frac{f(x)-f(y)}{x-y} \right| \leq M
+    \]
+    for all \( x,y \in A \). Show that if \( f \) is differentiable on a closed interval \( [a,b] \) and if \( f' \) is continuous on \( [a,b] \), then \( f \) is Lipschitz on \( [a,b] \). 
+
+\begin{proof}
+Since \( f' \) is continuous on \( [a,b] \) and \( [a,b] \) is compact, it follows that \( f' \) realizes a maximum and minimum on \( [a,b] \). That is, there exists \( M > 0 \) such that for all \( x \in [a,b] \)
+\[
+\vert f'(x) \vert \leq M
+\]
+Given \( x,y \in [a,b] \), by the MVT, we have that there exists \( c \in (x,y) \subset [a,b] \) such that
+\[
+\left| \frac{f(x)-f(y)}{x-y} \right| = \vert f'(c) \vert \leq M
+\]
+Thus, \( f \) is Lipschitz on \( [a,b] \). 
+\end{proof}
+
+\item Recall from Exercise 4.3.9 that a function \( f \) is contractive on a set \( A \) if there exists a constant \( 0< s < 1 \) such that
+\[
+\vert f(x) - f(y) \vert < s \vert x-y \vert
+\]
+for all \( x, y \in A \). Show that if \( f \) is differentiable and \( f' \) is continuous and satisfies \( \vert f'(x) \vert < 1 \) on a closed interval, then \( f \) is contractive on this set.
+
+\begin{proof}
+Let the assumptions on \( f \) hold. Since \( f' \) is continuous on \( [a,b] \), which is compact, it follows that \( f' \) achieves a maximum and a minimum there. Since, by assumption, \( \vert f'(x) \vert < 1 \) for all \( x \in [a,b] \), it follows there is \( 0 < s < 1 \) such that for all \( x \in [a,b] \)
+\[
+\vert f'(x) \vert \leq s 
+\]
+It is not to hard to show that, from the above proof, we have that this implies that for all \( x, y \in [a,b] \)
+\[
+\left| \frac{f(x)-f(y)}{x-y} \right| \leq s
+\]
+which in turn gives
+\[
+\vert f(x)-f(y) \vert \leq s \vert x-y \vert
+\]
+Therefore, \( f \) is a contraction mapping.
+\end{proof}
+
+\item Let \( h \) be a differentiable function defined on the interval \( [0,3] \), and assume that \( h(0) = 1, h(1)=2\), and \( h(3)=2 \). 
+\begin{enumerate}
+    \item Argue that there exists a point \( d \in [0,3] \) where \( h(d) =d \).
+    \item Argue that at some point \( c \) we have \( h'(c) = \frac{1}{3} \).
+    \item Argue that \( h'(x) = \frac{1}{4} \) at some point in the domain.
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}
+    \item Since \( h \) is differentiable on \( [0,3] \) it follows that it is continuous there. So if
+    \[
+    g(x) = h(x) - x 
+    \]
+    Then \( g \) is also continuous on \( [0.3] \). We observe that
+    \begin{align*}
+        g(1) &= h(1) -1 \\
+        &= 2-1 \\
+        &= 1 \\
+        \intertext{and}
+        g(3) &= h(3) - 3 \\
+        &= 2-3 \\
+        &= -1
+    \end{align*}
+    So by the IVT, it follows that there exists \( d \in (a,b) \) such that \( g(d) = 0 \). Thus there exists \( d \in (0,3) \) such that \( h(d) - d = 0 \). That is \( h(d) = d \). Therefore, \( h \) has a fixed point in \( [0,3] \).
+    
+    \item By the MVT, we have that there exists \( c \in [0,3] \) such that
+    \[
+    h'(c) = \frac{h(3)-h(0)}{3-0} = \frac{2-1}{3} = \frac{1}{3}
+    \]
+    
+    \item By the MVT, there exists \( c_1, c_2 \in (0,3) \) such that
+    \begin{align*}
+        f'(c_1) = &\frac{h(1)-h(0)}{1-0} = 1 \\
+        f'(c_2) = &\frac{h(3)-h(1)}{3-1} = 0
+    \end{align*}
+    Since \( 0 < \frac{1}{4} < 1 \) we then have, by Darboux, that there exists \( c_3 \in (0,3) \) such that 
+    \[
+    f'(c_3) = \frac{1}{4}
+    \]
+\end{enumerate}
+\end{proof}
+
+\item \begin{enumerate}
+    \item Supply the details for the proof of Cauchy's Generalized Mean Value Theorem.
+    
+    \item Give a graphical interpretation of the generalized Mean Value Theorem analogous to the one given for the Mean Value Theorem at the beginning of Section 5.3 (Consider \( f \) and \( g \) as parametric equations on a curve.)
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}
+    \item Following with the author, we simply apply the MVT to the function \( h(x) = [f(b)-f(a)]g(x)-[g(b)-g(a)]f(x) \). So there exists \( c \in (a,b) \) such that
+    \begin{align*}
+    h'(c) &= \frac{h(b)-h(a)}{b-a} \\
+    &= \frac{[f(b)-f(a)]g(b)-[g(b)-g(a)]f(b)-\left( [f(b)-f(a)]g(a) - [g(b)-g(a)]f(a) \right)}{b-a} \\
+    &= 0
+    \end{align*}
+    On the other hand, we also have that
+    \begin{align*}
+        h'(c) &= [f(b)-f(a)]g'(c) - [g(b)-g(a)]f'(c) \\
+        \intertext{which, together with the above, gives us}
+        0 &= [f(b)-f(a)]g'(c) - [g(b)-g(a)]f'(c) \\
+        [g(b)-g(a)]f'(c) &= [f(b)-f(a)]g'(c)
+    \end{align*}
+    as desired.
+    
+    \item  
+\end{enumerate}
+\end{proof}
+
+\item A \emph{fixed point} of a function \( f \) is a value \( x \) where \( f(x) = x \). Show that if \( f \) is differentiable on an interval with \( f'(x) \neq 1 \), then \( f \) can have at most one fixed point. 
+
+\begin{proof}
+Let \( f \) be differentiable on an interval, \( I \), with \( f'(x) \neq 1 \) on \( I \). Now, suppose to the contrary, that there exist two different fixed points of \( f \). That is there is \( x_1 < x_2 \) such that \( f(x_1) = x_1 \) and \( f(x_2)=x_2 \). Then, by the MVT there exists a \( c \in I \) such that
+\[
+f'(c) = \frac{f(x_2)-f(x_1)}{x_2-x_1} = \frac{x_2-x_1}{x_2-x_1} = 1
+\]
+which contradicts with our assumption that \( f'(c) \neq 1 \) on \( I \). Therefore, there cannot be two distinct fixed points of \( f \).
+\end{proof}
+
+\item Let \( g: [0,1] \rightarrow \mathbb{R} \) be twice-differentiable (i.e. both \( g \) and \( g' \) are differentiable functions) with \( g''(x) > 0 \) for all \( x \in [0,1] \). If \( g(0) > 0 \) and \( g(1)=1 \), show that \( g(d) = d \) for some point \( d \in (0,1) \) if and only if \( g'(1) > 1 \). (This geometrically plausible fact is used in the introductory discussion to Chapter 6.)
+
+\begin{proof}
+We first demonstrate that \( g'(x) \) is strictly increasing on \( [0,1] \). So, suppose to the contrary, that there exists \( x_1 < x_2 \in [0,1] \) such that \( g'(x_1) \geq g'(x_2) \). So
+\[
+\frac{g'(x_2)-g'(x_1)}{x_2-x_1} \leq 0
+\]
+But then, by the MVT, there exists \( k \in (0,1) \) such that
+\[
+g'(k) \leq 0
+\]
+contradicting with our assumption that \( g''(x) > 0 \) for all \( x \in [0,1] \). Thus if \( x_1 < x_2 \) then \( g'(x_1) < g'(x_2) \). Now, supposing that there is \( d \in (0,1) \) such that \( g(d) = d \), then, by the MVT, there exists \( c \in (d,1) \) such that
+\[
+g'(c) = \frac{g(1)-g(d)}{1-d} = \frac{1-d}{1-d} = 1
+\]
+However, since \( g'(x) \) is strictly increasing on \( [0,1] \)
+\[
+c<1 \text{ implies } g'(c) < g'(1) 
+\]
+So
+\[
+1 < g'(1)
+\]
+On the other hand, if \( \forall \: x \in (0,1) \) we have that \( g(x) \neq x \). Since \( g \) is differentiable on \( (0,1) \) is also continuous there. Thus, as a consequence of the IVT, it follows that \( g(x) \geq x \) for all \( x \in [0,1] \). So for all \( x \in [0,1] \) we have
+\begin{align*}
+    g(x) - x &\geq 0 \\
+    \frac{g(x)-x}{x-1} &\leq 0 \\
+    \frac{g(x) - 1 + 1 - x}{x-1} &\leq 0 \\
+    \frac{g(x)-1}{x-1} + \frac{1-x}{x-1} &\leq 0 \\
+    \frac{g(x)-1}{x-1} - 1 &\leq 0 \\
+    \frac{g(x)-1}{x-1} &\leq 1 \\
+    \intertext{and so, by Exercise 4.2.8,}
+    \lim_{x \rightarrow 1} \frac{g(x)-1}{x-1} &\leq 1 \\
+    g'(1) &\leq 1
+\end{align*}
+\end{proof}
+
+\item 
+\begin{enumerate}
+\item Recall that a function \( f: (a,b) \rightarrow \mathbb{R} \) is \emph{increasing} on \( (a,b) \) if \linebreak \( f(x) \leq f(y) \) whenever \( x< y \) in \( (a,b) \). Assume \( f \) is differentiable on \( (a,b) \). Show that \( f \) is increasing on \( (a,b) \) if and only if \( f'(x) \geq 0 \) for all \( x \in (a,b) \). 
+
+\item Show that the function
+\[
+g(x) = \begin{cases} \frac{x}{2}+x^2\sin(\frac{1}{x}) &, x \neq 0 \\ 0 &, x=0 \end{cases}
+\]
+is differentiable on \( \mathbb{R} \) and satisfies \( g'(0)>0 \). Now prove that \( g \) is \emph{not} increasing over any open interval containing 0. 
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}
+    \item Let \( f \) be increasing on \( (a,b) \) and let \( c \in (a,b) \). Since \( f \) is differentiable on \( (a,b) \) we know that \( f'(c) \) exists. In particular, by exercise 4.2.8, we have
+    \[
+        f'(c) = \lim_{x \rightarrow c^+} \frac{f(x)-f(c)}{x-c} \geq 0
+    \]
+    On the other hand, if there are \( x<y \in (a,b) \) such that \( f(x)>f(y) \) then, by the MVT, we have that there exists \( c \in (x,y) \) such that
+    \[
+    f'(c) = \frac{f(y)-f(x)}{y-x} < 0
+    \]
+    
+    \item First, we see that \( g \) is clearly differentiable on \( \mathbb{R} \setminus \{ 0 \} \). Indeed, for \( x \in \mathbb{R} \setminus \{ 0 \} \)
+    \[
+    g'(x) = \frac{1}{2} + 2x \sin(1/x) - \cos(1/x)
+    \]
+    Now,
+    \begin{align*}
+        \frac{g(x) - g(0)}{x-0} &= \frac{g(x)-0}{x} \\
+        &= \frac{g(x)}{x} \\
+        \intertext{and for \( x \neq 0 \)}
+        &= \frac{1}{2} + x \sin(1/x) \\
+        \intertext{thus}
+        g'(0) &= \lim_{x \rightarrow 0} \frac{1}{2} + x\sin(1/x) \\
+        &= \frac{1}{2} \\
+        &> 0
+    \end{align*}
+    Now, let \( (a,b) \subset \mathbb{R} \) be an interval be such that \( 0 \in (a,b) \) . Then, for \( n \) large enough, we will have \( \left[ -\frac{1}{2\pi n}, \frac{1}{2\pi n} \right] \subset (a,b) \). So, 
+    \[
+        g'\left( \frac{1}{2\pi n} \right) = \frac{1}{2} + 2 \frac{1}{2\pi n}\sin(2\pi n) - \cos(2\pi n) = \frac{1}{2} - 1 = -\frac{1}{2} < 0 
+    \]
+    Thus, by (a) , we know that \( g \) is not increasing on \( (a,b) \).
+    
+\end{enumerate}
+\end{proof}
+
+\item Assume \( g: (a,b) \rightarrow \mathbb{R} \) is differentiable at some point \( c \in (a,b) \). If \( g'(c) \neq 0 \), show that there exists a \( \delta \)-neighborhood \( V_\delta(c) \subset (a,b) \) for which \( g(x) \neq g(c) \) for all \( x \in V_\delta (c) \). 
+
+\begin{proof}
+Suppose not. Then \( \forall \: \delta > 0 \) there exists \( x \in V_\delta(c) \) such that \( g(x) = g(c) \). So then there exists a sequence \( (x_n) \) such that, \( x_n \rightarrow c \), and for all \( n \) we have \( x_n \neq c \) and \( g(x_n) = g(c) \). Since \( g \) is assumed to be differentiable at \( c \), it follows then that
+\[
+g'(c) = \lim_{n \rightarrow \infty} g(x_n) = \lim_{n \rightarrow \infty} 0 = 0
+\]
+which contradicts with our assumption that \( g'(c) \neq 0 \).
+\end{proof}
+
+\item Assume that \( \lim_{x \rightarrow c} f(x) = L \), where \( L \neq 0 \), and assume \( \lim_{x \rightarrow c} g(x) = 0 \). Show that \( \lim_{x\rightarrow c} \left| \frac{f(x)}{g(x)} \right| = \infty \).
+
+\begin{proof}
+Let \( M > 0 \) be given. Notice, first, that \( \lim_{x \rightarrow c} f(x) = L \) implies that, in some neighborhood of \( c \), \( f \) is bounded below by a nonzero number. That is, there exists \( \delta_1 > \) such that \( \vert x -c \vert < \delta_1 \) implies
+\[
+\vert f(x) \vert \geq K
+\]
+for some \( K > 0 \). Furthermore, there exists \( \delta_2 > 0 \) such that \( \vert x-c \vert < \delta_2 \) implies
+\[
+\vert g(x) \vert < \frac{K}{M}
+\]
+Notice then that \( \frac{K}{M} > 0 \). Thus if \( \delta = \min\{ \delta_1, \delta_2 \} \), then \( \vert x-c \vert < \delta \) implies 
+\[
+\left| \frac{f(x)}{g(x)} \right| = \frac{\vert f(x) \vert}{\vert g(x) \vert} \geq \frac{K}{\vert g(x)\vert} > \frac{K}{\frac{K}{M}} = K \frac{M}{K} = M
+\]
+where the above is valid since both \( K, \frac{K}{M} > 0 \). Thus, \( \lim_{x \rightarrow c} \left| \frac{f(x)}{g(x)} \right| = \infty \). 
+\end{proof}
+
+\item Let \( f \) be a bounded function and assume \( \lim_{x \rightarrow c} g(x) = \infty \). Show that \( \lim_{x \rightarrow c} \frac{f(x)}{g(x)} = 0 \).
+\begin{proof}
+So there is \( M > 0 \) such that \( \vert f(x) \vert \leq M \) for all \( x \). Furthermore, given \( \epsilon > 0 \), there is \( \delta> 0 \) such that \( \vert x-c \vert < \delta \) implies
+\[
+\vert g(x) \vert \geq \frac{2M}{\epsilon}
+\]
+Thus, for \( \vert x-c \vert < \delta \) we have
+\[
+\left| \frac{f(x)}{g(x)} \right| = \frac{\vert f(x) \vert}{\vert g(x) \vert} \leq \frac{M}{\vert g(x) \vert} \leq \frac{M}{\frac{2M}{\epsilon}} = \frac{\epsilon}{2} < \epsilon
+\]
+Therefore, \( \lim_{x \rightarrow c} \frac{f}{g} = 0 \).
+\end{proof}
+
+
+\item Use the Generalized Mean Value Theorem to furnish a proof of the \( 0/0 \) case of L'Hospital's rule.
+
+\begin{proof}
+Let the assumptions from Theorem 5.3.6 hold. Notice that \( \lim_{x \rightarrow a} \frac{f'(x)}{g'(x)} = L \) implies that there exists an interval, \( I \), containing \( a \), on which \( g'(x) \) is never zero. Now let \( (x_n), (y_n) \) be sequences such that
+\begin{align*}
+    y_n &\rightarrow a^+ \\
+    x_n &\rightarrow a^-
+\end{align*}
+where \( \forall_n \: x_n, y_n \neq a \). We wish to show that 
+\begin{align*}
+    \lim_{n \rightarrow \infty} \frac{f(y_n)}{g(y_n)} &= L \\
+    \intertext{and} \\
+    \lim_{n \rightarrow \infty} \frac{f(x_n)}{g(x_n)} &= L
+\end{align*}
+which will establish that
+\[
+\lim_{x \rightarrow a^+} \frac{f(x)}{g(x)} = \lim_{x \rightarrow a^-} \frac{f(x)}{g(x)} = \lim_{x \rightarrow a} \frac{f(x)}{g(x)} = L
+\]
+To this end, we observe that, for \( n \) large enough we have that \( (x_n),(y_n) \subset I \). Thus, by the Generalized Mean Value Theorem, we get that there exist sequences \( (k_n), (k_n^*) \subset I \) such that
+\begin{enumerate}
+    \item \( k_n \rightarrow a^+ \)
+    
+    \item \( k_n^* \rightarrow a^- \)
+    
+    \item \( \frac{f(y_n)-f(a)}{g(y_n)-g(a)} = \frac{f(y_n)}{g(y_n)} = \frac{f'(k_n)}{g'(k_n)} \)
+    
+    \item \( \frac{f(a)-f(x_n)}{g(a)-g(x_n)} = \frac{f(x_n)}{g(x_n)} = \frac{f'(k_n^*)}{g'(k_n^*)} \)
+\end{enumerate}
+Notice that our assumption that \( \lim_{x \rightarrow a} \frac{f'(x)}{g'(x)} = L \), together with (a), (b), (c), and (d) above, imply that 
+\[
+\lim_{n \rightarrow \infty} \frac{f(y_n)}{g(y_n)} = \lim_{n \rightarrow \infty} \frac{f'(k_n)}{g'(k_n)} = L
+\]
+and
+\[
+\lim_{n \rightarrow \infty} \frac{f(x_n)}{g(x_n)} = \frac{f'(k_n^*)}{g'(k_n^*)} = L
+\]
+Therefore
+\[
+\lim_{x \rightarrow a^+} \frac{f(x)}{g(x)} = \lim_{x \rightarrow a^-} \frac{f(x)}{g(x)} = \lim_{x \rightarrow a} \frac{f(x)}{g(x)} = L
+\]
+\end{proof}
+
+\item Assume \( f \) and \( g \) are as described in Theorem 5.3.6, but now add the assumption that \( f \) and \( g \) are differentiable at \( a \) and \( f' \) and \( g' \) are continuous at \( a \). Find a short proof for the \( 0/0 \) case of L'Hospital's rule under this stronger hypothesis.
+
+\begin{proof}
+Differentiability of \( f \) and \( g \) at \( a \), together with the assumption that \( f' \) and \( g' \) are continuous at \( a \), yield,
+\[
+L = \lim_{x \rightarrow a} \frac{f'(x)}{g'(x)} = \frac{f'(a)}{g'(a)} = \lim_{x \rightarrow a} \frac{\frac{f(x)-f(a)}{x-a}}{\frac{g(x)-g(a)}{x-a}} = \lim_{x \rightarrow a} \frac{f(x)-f(a)}{g(x)-g(a)} = \lim_{x \rightarrow a} \frac{f(x)}{g(x)}
+\]
+\end{proof}
+
+\item Review the hypothesis of Theorem 5.3.6. What happens if we do not assume that \( f(a) = g(a) = 0 \), but assume only that \( \lim_{x \rightarrow a} f(x) = 0 \) and \( \lim_{x \rightarrow a} g(x) = 0 \)? Assuming we have a proof for Theorem 5.3.6 as it is written, explain how to construct a valid proof under this slightly weaker hypothesis.
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}

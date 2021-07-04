@@ -1,0 +1,296 @@
+\section*{4.4}
+\begin{enumerate}
+    \item \begin{enumerate}
+        \item Show that \( f(x) = x^{3} \) is continuous on all of \( \mathbb{R} \).
+        
+        \item Argue, using Theorem 4.4.6 that \( f \) is not uniformly continuous on \( \mathbb{R} \).
+        
+        \item Show that \( f \) is uniformly continuous on any bounded subset of \( \mathbb{R} \).
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( c \in \mathbb{R} \) and let \( \epsilon > 0 \) be given. Now we observe that
+        \[
+        \vert x^{3} - c^{3} \vert = \vert x-c \vert \vert x^{2}+cx+c^{2} \vert
+        \]
+        Since \( x^{2}+cx+c^{2} \) is clearly a parabola, it follows that it is bounded on \( [c-1 , c+1] \). That is \( \vert x -c \vert < 1 \) implies 
+        \[
+        \vert x^{2}+cx+c^{2} \vert < K
+        \]
+        Thus if we take \( \vert x - c \vert < \min\{\frac{\epsilon}{K}, 1\} \) then 
+        \[
+         \vert x^{3} - c^{3} \vert = \vert x-c \vert \vert x^{2}+cx+c^{2} \vert < \frac{\epsilon}{K}\vert x^{2}+cx+c^{2} \vert < \frac{\epsilon}{K} K = \epsilon
+        \]
+        as desired.
+        
+        \item Let \( \epsilon = 1 \) and let \( (x_{n}) \) and \( (y_{n}) \) be sequences defined by
+        \begin{align*}
+            x_{n} &= n \\
+            y_{n} &= n + \frac{1}{n}
+        \end{align*}
+        Then
+        \[
+        \vert y_{n} - x_{n} \vert = \vert n + \frac{1}{n} - n \vert = \vert \frac{1}{n} \vert \rightarrow 0
+        \]
+        Now we observe that, for all \( n \in \mathbb{N} \), we have
+        \begin{align*}
+        \vert f(y_{n}) - f(x_{n}) \vert &= \left| \left( n + \frac{1}{n} \right)^{3} - n^{3} \right| \\
+        &= \left| n^{3} + 3n + \frac{3}{n} + \frac{1}{n^{3}} - n^{3} \right| \\
+        &= \left| 3n + \frac{3}{n} + \frac{1}{n^{3}} \right| \\
+        &= 3n + \frac{3}{n} + \frac{1}{n^{3}} \\
+        &> 3n \\
+        &> 1 \\
+        \end{align*}
+        Thus, by Theorem 4.4.6, it follows that \( f(x) = x^{3} \) is not uniformly continuous on \( \mathbb{R} \).
+        
+        \item Let \( A \subset \mathbb{R} \) be bounded. Thus there exists \( a > 0 \) such that \linebreak \( A \subset [-a,a] \). From (a), we know that \( x^{3} \) is continuous on \( [-a,a] \). Thus, by compactness of \( [-a,a] \) and Theorem 4.4.8, we get that \( x^{3} \) is uniformly continuous on \( [-a, a] \) and therefore on \( A \). 
+    \end{enumerate}
+    \end{proof}
+    
+    \item Show that \( f(x) = \frac{1}{x^{2}} \) is uniformly continuous on the set \( [1, \infty ) \) but not on the set \( (0,1]\).
+    
+    \begin{proof}
+    We first observe that, by Theorem 4.3.4 (iii), we have that \( f(x) = \frac{1}{x^{2}} \) is continuous on \( \mathbb{R} \setminus \{0\} \). 
+    To show that \( f \) is uniformly continuous on \( [1,\infty) \) we begin by letting \( \epsilon > 0 \) be given. Then, by Archi, there exists \( n \in \mathbb{N} \) such that
+    \[
+    \frac{1}{n} < \epsilon
+    \]
+    and so \( \forall x \geq \sqrt{n} \) we have
+    \[
+    0 < \frac{1}{x^{2}} < \epsilon \tag{1}
+    \]
+    Now, since \( f(x) \) is continuous on \( [1, \infty) \) it follows then, by Theorem 4.4.8, that is uniformly continuous on \( [1,\sqrt{n}] \). So there exists \( \delta > 0 \) such that \( \vert x-y \vert < \delta \) implies \( \vert f(x) - f(y) \vert < \epsilon \) so long as \( x,y \in [1,\sqrt{n}] \). On the other hand if \( x,y \in [\sqrt{n},\infty) \), by (1), we have then that
+    \[
+    \left| \frac{1}{x^{2}} - \frac{1}{y^{2}} \right| < \vert \epsilon - 0 \vert = \epsilon
+    \]
+    thus for \( x,y \in [\sqrt{n}, \infty) \) such that \( \vert x-y \vert < \delta \) we have
+    \[
+    \vert f(x) - f(y) \vert < \epsilon
+    \]
+    Therefore, \( f \) is uniformly continuous on \( [1,\infty) \). To demonstrate that \( f \) is \emph{not} uniformly continuous on \( (0,1] \) we let \( \epsilon = 1 \) and
+    \begin{align*}
+        x_{n} &= \frac{1}{2n} \\
+        y_{n} &= \frac{1}{n}
+    \end{align*}
+    It is not hard to show that \( \vert x_{n} - y_{n} \vert \rightarrow 0 \). However
+    \[
+    \vert f(x_{n}) - f(y_{n}) \vert = \left| \frac{1}{\frac{1}{2n}^{2}} - \frac{1}{\frac{1}{n}^{2}} \right| = \left| 4n^{2}-n^{2} \right| = 3n^{2} > 1 = \epsilon
+    \]
+    Thus, \( f \) is not uniformly continuous on \( (0,1] \). 
+    \end{proof}
+    
+    \item Furnish the details (including an argument for Exercise 3.3.1 if is not already done) for the proof for the Extreme Value Theorem.
+    
+    \begin{proof}
+    We begin by demonstrating Exercise 3.3.1. If \( K \) is compact then, by Theorem 3.3.8, it is closed and bounded. Therefore, by boundedness of \( K \), both \( \sup K \) and \( \inf K \) exist. Furthermore, by closure of \( K \), both \( \sup K, \inf K \in K \). Now if \( f: K \rightarrow \mathbb{R} \) is continuous, by theorem 4.4.2, we have that \( f(K) \) is compact. By our previous argument we then know that \( \sup f(K), \inf f(K) \in f(K) \). Thus there exists \( x_{0} \in K \) such that \( f(x_{0}) = \inf f(K) \) and \( x_{1} \in K \) such that \( f(x_{1}) = \sup f(K) \). This, in turn, implies that, for all \( x \in K \) we have \( f(x_{0}) = \inf f(K) \leq f(x) \leq \sup f(K) = f(x_{1}) \) as desired.  
+    \end{proof}
+    
+    \item Show that if \( f \) is continuous on \( [a,b] \) with \( f(x) > 0 \) for all \( a \leq x \leq b \), then \( \frac{1}{f} \) is bounded on \( [a,b] \).
+    \begin{proof}
+    We observe that \( [a,b] \) is compact and, by continuity of \( f \), we therefore have that \( f([a,b]) \) is compact as well. Compactness of \( f([a,b]) \) implies that \( f([a,b]) \) is closed and bounded. Thus, \( \forall x \in [a,b] \) we have
+    \[
+    l \leq f(x) \leq u
+    \]
+    and thus
+    \[
+    \frac{1}{l} \geq \frac{1}{f(x)} \geq \frac{1}{u}
+    \]
+    Thus \( \frac{1}{f} \) is bounded on \( [a,b] \).
+    \end{proof}
+    
+    \item Using the advice that follows Theorem 4.4.6, provide a complete proof for this criterion for nonuniform continuity. 
+    
+    \begin{proof}
+    \( \Rightarrow \): Suppose \( f \) is not uniformly continuous on \( A \). Then there exists \( \epsilon_{0} > 0 \) such that for all \( \delta > 0 \) there exist \( x,y \in A \) such that \( \vert x-y \vert < \delta \) while \( \vert f(x) - f(y) \vert \geq \epsilon_{0} \). In particular for all \( n \in \mathbb{N} \) there exist \( x_{n},y_{n} \in A \) such that \( \vert x_{n} - y_{n} \vert < \frac{1}{n} \) while \( \vert f(x_{n}) - f(y_{n}) \vert \geq \epsilon_{0} \). Clearly we have then that \( \vert x_{n} - y_{n} \vert \rightarrow 0 \). 
+    
+    \( \Leftarrow \): Suppose there exists \( \epsilon_{0} > 0 \) and \( (x_{n}) \), \( (y_{n}) \) in \( A \) satisfying \( \vert x_{n} - y_{n} \vert \rightarrow 0 \) but \( \vert f(x_{n}) - f(y_{n}) \vert \geq \epsilon_{0} \). Then for \( \epsilon_{0} \) we have that for all \( \delta > 0 \) there exist \( x_{n}, y_{n} \in A \) satisfying \( \vert x_{n} - y_{n} \vert < \delta \). However, by assumption, we have that \( \vert f(x_{n}) - f(y_{n}) \vert \geq \epsilon_{0} \). Therefore, \( f \) is not uniformly continuous on \( A \). 
+    \end{proof}
+    
+    \item Give an example of each of the following, or state that such a request is impossible.
+    \begin{enumerate}
+        \item a continuous function \( f:(0,1) \rightarrow \mathbb{R} \) and a Cauchy sequence \( (x_{n}) \) such that \( f(x_{n}) \) is not a Cauchy sequence;
+        \item a continuous function \( f: [0,1] \rightarrow \mathbb{R} \) and a Cauchy sequence \( (x_{n}) \) such that \( f(x_{n}) \) is not a Cauchy sequence;
+        \item a continuous function \( f:[0,\infty) \rightarrow \mathbb{R} \) and a Cauchy sequence \( (x_{n}) \) such that \( f(x_{n}) \) is not a Cauchy sequence;
+        \item a continuous bounded function \( f \) on \( (0,1) \) that attains a maximum value on this open interval but not a minimum value. 
+    \end{enumerate}
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( f(x) = \frac{1}{x} \) and \( x_{n} = \frac{1}{n} \). Then \( (x_{n}) \rightarrow 0 \) and is therefore Cauchy. On the other hand, \( f(x_{n}) = n \) which is clearly not Cauchy.
+        
+        \item The request is impossible to satisfy. If \( f \) is continuous on \( [0,1] \) then, by compactness of \( [0,1] \) we know that if \( (x_{n}) \subset [0,1] \) and \( x_{n} \rightarrow L \), then, \( L \in [0,1]\). But then, by continuity of \( f \) we would get that \( f(x_{n}) \rightarrow f(L) \) implying that \( f(x_{n}) \) is Cauchy.
+        
+        \item The request is impossible to satisfy. Notice \( [0,\infty) \) is a closed set. Thus again if \( (x_{n}) \subset [0, \infty) \) and \( x_{n} \rightarrow L \), then \( L \in [0,\infty) \). Thus, by continuity we would have \( f(x_{n}) \rightarrow f(L) \) implying that \( f(x_{n}) \) is Cauchy.
+        
+        \item Let \( f: (0,1) \rightarrow \mathbb{R} \) be defined by
+        \[
+        f(x) = -\left(x-\frac{1}{2}\right)^{2}+\frac{1}{2}
+        \]
+        It is an easy matter to show that \( f \) is continuous on \( (0,1) \) and that it attains a maximum but no minimum.
+    \end{enumerate}
+    \end{proof}
+    
+    \item Assume that \( g \) is defined on an open interval \( (a,c) \) and it is known to be uniformly continuous on \( (a,b] \) and \( [b,c) \), where \( a < b < c \). Prove that \( g \) is uniformly continuous on \( (a,c) \). 
+    \begin{proof}
+    Let \( \epsilon > 0 \) be given. So, by uniform continuity on \( (a,b] \), there exists \( \delta_{1} > 0 \) such that whenever \( x,y \in (a,b] \) and \( \vert x-y \vert < \delta_{1} \) we get \( \vert f(x) - f(y) \vert < \frac{\epsilon}{2} \). Similarly, there is \( \delta_{2} > 0 \) such that \( x,y \in [b,c) \) and \( \vert x-y \vert < \delta_{2} \) implies \( \vert f(x) - f(y) \vert < \frac{\epsilon}{2} \). Thus choosing \( \delta = \min\{ \delta_{1}, \delta_{2} \} \) we get that whenever \( x,y \in (a,b] \) and \( \vert x-y \vert < \delta \) we have
+    \[
+    \vert f(x) - f(y) \vert < \frac{\epsilon}{2} < \epsilon
+    \]
+    we also have whenever \( x,y \in [b,c) \) and \( \vert x-y \vert < \delta \) it follows that 
+    \[
+    \vert f(x) - f(y) \vert < \frac{\epsilon}{2} < \epsilon
+    \]
+    Lastly, wlog, if \( x \in (a,b] \) and \( y \in [b,c) \) and \( \vert x-y \vert < \delta \) then
+    \[
+    \vert f(x) - f(y) \vert \leq \vert f(x) - f(b) \vert + \vert f(b) - f(y) \vert  < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+    \]
+    Therefore, for all \( x,y \in (a,c) \) if \( \vert x-y \vert < \delta \) it follows that
+    \[
+    \vert f(x) - f(y) \vert < \epsilon
+    \]
+    establishing that \( f \) is uniformly continuous on \( (a,c) \). 
+    \end{proof}
+    
+    \item 
+    \begin{enumerate}
+        \item Assume that \( f:[0,\infty) \rightarrow \mathbb{R} \) is continuous at every point in its domain. Show that if there exists \( b > 0 \) such that \( f \) is uniformly continuous on the set \( [b,\infty) \), then \( f \) is uniformly continuous on \( [0,\infty) \).  
+        
+        \item Prove that \( f(x) = \sqrt{x} \) is uniformly continuous on \( [0,\infty) \). 
+    \end{enumerate}
+    \begin{proof}
+    
+    \begin{enumerate}
+        \item Notice that since \( f \) is continuous on \( [0,b] \) and \( [0,b] \) is compact, it follows that \( f \) is uniformly continuous on \( [0,b] \). Applying similar reasoning as in 7, we will get the desired result.
+        
+        \item Let \( \epsilon > 0 \) be given. To demonstrate that \( \sqrt{x} \) is uniformly continuous on \( [\epsilon^{2}, \infty) \) we let \( x,y \in [\epsilon^{2},\infty) \) such that, wlog, \( x < y \) and \( y - x < \epsilon^{2} \). Then
+        \[
+        \sqrt{y} - \sqrt{x} < \sqrt{x+\epsilon^{2}} - \sqrt{x} \leq \sqrt{x} + \sqrt{\epsilon^{2}} - \sqrt{x} = \epsilon
+        \]
+        Thus \( \sqrt{x} \) is uniformly continuous on \( [\epsilon^{2},\infty) \). Thus, by continuity of \( \sqrt{x} \), which is a trivial matter to show, and part (a), we know that \( \sqrt{x} \) is uniformly continuous on \( [0,\infty) \).
+    \end{enumerate}
+    
+    \end{proof}
+    
+    \item A function \( f: A \rightarrow \mathbb{R} \) is called \emph{Lipschitz} if there exists a bound \( M > 0 \) such that
+    \[
+    \left| \frac{f(x)-f(y)}{x-y} \right| \leq M
+    \]
+    for all \( x,y \in A \). Geometrically speaking, a function \( f \) is Lipschitz if there is a uniform bound on the magnitude of the slopes of lines drawn through any two points on the graph of \( f \).
+    \begin{enumerate}
+        \item Show that if \( f: A \rightarrow \mathbb{R} \) is Lipschitz, then it is uniformly continuous on \( A \).
+        
+        \item Is the converse statement true? Are all uniformly continuous functions necessarily Lipschitz?
+    \end{enumerate}
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( f: A \rightarrow \mathbb{R} \) be Lipschitz and let \( x,y \in A \) such that \linebreak \( \vert x - y \vert < \frac{\epsilon}{M} \). Then
+        \[
+        \left| \frac{f(x)-f(y)}{x-y} \right| \leq M
+        \]
+        which implies
+        \[
+        \left| f(x)-f(y) \right| \leq M \vert x-y \vert < M \frac{\epsilon}{M} = \epsilon
+        \]
+        Thus \( f \) is uniformly continuous on \( A \). 
+        
+        \item No the converse is not true. Take \( f(x) = \sqrt{x} \). As we have shown, \( f \) is uniformly continuous on \( [0,\infty) \). However, we observe that, given \( M > 0 \), for all \( 0 < x < \frac{1}{M^{2}} \) we have
+        \[
+        \left| \frac{\sqrt{x}-\sqrt{0}}{x-0} \right| = \frac{\sqrt{x}}{x} = \frac{1}{\sqrt{x}} > \frac{1}{\sqrt{\frac{1}{M^{2}}}} = M
+        \]
+    \end{enumerate}
+    \end{proof}    
+    
+    \item Do uniformly continuous functions preserve boundedness? If \( f \) is uniformly continuous on a bounded set \( A \), is \( f(A) \) necessarily bounded?
+    
+    \begin{proof}
+        Yes, uniform continuity does, indeed, preserve boundedness. To demonstrate we proceed by way of contradiction. To this end, suppose that \( A \) is bounded, \( f \) is uniformly continuous on \( A \), and that \( f(A) \) is unbounded. Then there exists a sequence \( (x_{n}) \subseteq A \) such that \linebreak \( f(x_{n}) \rightarrow \pm \infty \) as \( n \rightarrow \infty \). Now, by boundedness of \( A \) and Bolzano-Weierstrass, it follows that there exists a convergent subsequence \( (x_{n_{k}}) \). Clearly \( \lim_{k\rightarrow \infty} x_{n_{k}} = L \not\in A \) since, otherwise, by continuity of \( f \) on \( A \), we would have
+        \[
+        f(L) = \pm \infty 
+        \]
+        which contradicts with \( f(A) \subset \mathbb{R} \). So \( L \) must be a limit point of \( A \). Now let \( \epsilon > 0 \) be given. Then there exists \( \delta > 0 \) such that \( \vert x - y \vert < \delta \) implies \( \vert f(x) - f(y) \vert < \epsilon \). But there exists \( K \) such that \( \forall k > K \) we have
+        \[
+        \vert x_{n_{k}} - L \vert < \frac{\delta}{2}
+        \]
+        and so, it follows that for all \( s,k > K \) we have
+        \[
+        \vert x_{n_{k}} - x_{n_{s}} \vert < \delta
+        \]
+        which, in turn, implies that
+        \[
+        \vert f(x_{n_{k}}) - f(x_{n_{s}}) \vert < \epsilon
+        \]
+        for all \( s,k > K \) which, finally, is contrary to our assumption that \linebreak \( f(x_{n}) \rightarrow \pm \infty \). Therefore, \( f(A) \) is, necessarily, bounded.
+    \end{proof}
+    
+    \item (Topological Characterization of Continuity). Let \( g \) be defined on all of \( \mathbb{R} \). If \( A \) is a subset of \( \mathbb{R} \), define the set \( g^{-1}(A) \) by
+    \[
+    g^{-1}(A) = \{ x \in \mathbb{R}: g(x) \in A \}
+    \]
+    Show that \( g \) is continuous if and only if \( g^{-1}(O) \) is open whenever \( O \subset \mathbb{R} \) is an open set.
+    
+    \begin{proof}
+    \( \Rightarrow \): Let \( O \) be open and \( x \in g^{-1}(O) \). So \( g(x) \in O \). Since \( O \) is open, there exists \( V_{\epsilon}(g(x)) \subset O \). By continuity, there then exists \( V_{\delta}(x) \) such that \( f\left( V_{\delta}(x) \right) \subset V_{\epsilon}(g(x)) \). So \( V_{\delta}(x) \subset g^{1}(O) \). Thus \( g^{-1}(O) \) is an n-hood of \( x \). Therefore, \( g^{-1}(O) \) is open. 
+    \\
+    \(\Leftarrow \): Let that \( g^{_1}(O) \) is open whenever \( O \) is open and let \( c \in \mathbb{R} \). Given \( \epsilon > 0 \) we have that \( g^{1}(V_{\epsilon}(g(c))) \) is open, and therefore that there is \( V_{\delta}(c) \subset g^{1}(V_{\epsilon}(g(c))) \). So \( f(V_{\delta}(x)) \subset V_{\epsilon}(g(x)) \). Therefore, \( g \) is continuous. 
+    \end{proof}
+    
+    \item Construct an alternate proof of Theorem 4.4.8 using the open cover characterization of compactness from 3.3.8 (iii).
+    
+    \begin{proof}
+        The following proof is adapted from Rudin. Let \( \epsilon > 0 \) be given. Since \( f \) is continuous, for each point \( p \in K \) there is a positive number \( \phi(p) \) such that
+        \[
+        \text{ if } q \in K \text{ and } \vert q - p \vert < \phi(p) \text{ then } \vert f(q) - f(p) \vert < \frac{\epsilon}{2}
+        \]
+        Now, let \( J(p) =\{ q: \vert q - p \vert < \frac{1}{2}\phi(p) \} \). Then \( \{ J(p): p \in K \} \) forms an open cover of \( K \). Thus, by compactness of \( K \), we get that there exists a finite subcover \( \{ J(p_{1}), J(p_{2}), \ldots, J(p_{n}) \} \). Now if we let \linebreak \( \delta = \frac{1}{2}\min\{ \phi(p_{1}), \phi(p_{2}), \ldots, \phi(p_{n}) \} > 0\) then we have that for \( \vert q - p \vert < \delta \), there exists \( p_{i} \) such that \( p \in J(p_{i}) \) and therefore
+        \[
+        \vert p - p_{i} \vert < \frac{1}{2}\phi(p_{i}) 
+        \]
+        But then 
+        \[
+        \vert q - p_{i} \vert \leq \vert q - p \vert + \vert p - p_{i} \vert < \delta + \frac{1}{2}\phi(p_{i}) < \phi(p_{i})
+        \]
+        Therefore 
+        \[
+        \vert f(q) - f(p) \vert \leq \vert f(q) - f(p_{i}) \vert + \vert f(p_{i}) - f(p) \vert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+        \]
+        Therefore, \( f \) is continuous on \( K \).
+    \end{proof}
+    
+    \item \begin{enumerate}
+        \item Show that a uniformly continuous function preserves Cauchy sequences; that is, if \( f: A \rightarrow \mathbb{R} \) is uniformly continuous and \( (x_{n}) \subset A \) is a Cauchy sequence, then show \( f(x_{n}) \) is a Cauchy sequence.
+        \item Let \( g \) be a continuous function on the open interval \( (a,b) \). Prove that \( g \) is uniformly continuous on \( (a,b) \) if and only if it is possible to define values \( g(a) \) and \( g(b) \) at the endpoints so that the extended function \( g \) is continuous on \([a,b] \).
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( f \) be uniformly continuous on \( A \), \( (x_{n}) \subset A \) be Cauchy, and \( \epsilon > 0 \) be given. Since \( f \) is uniformly continuous, there exists \( \delta > 0 \) such that \( \vert x-y \vert < \delta \) implies \( \vert f(x) - f(y) \vert < \epsilon \). Since \( (x_{n}) \) is Cauchy, there exists \( N \) such that \( m,n \geq N \) implies \( \vert x_{n}-x_{m} \vert < \delta \) which further implies that for all \( m,n \geq N \) we have \( \vert f(x_{n}) - f(x_{m}) \vert < \epsilon \). Therefore, \( f(x_{n}) \) is Cauchy.
+        
+        \item \( \Leftarrow \): Trivial.
+        
+        \( \Rightarrow \): Let \( g \) be uniformly continuous on \( (a,b) \) and let \( (x_{n}),(y_{n}) \subset (a,b) \) such that \( x_{n} \rightarrow a \) and \( y_{n} \rightarrow b \). So \( (x_{n}) \) and \( (y_{n}) \) are Cauchy. So, by (a), \(f(x_{n}) \) and \( f(y_{n}) \) are Cauchy. So there exist \( L \) and \( M \) such that \( f(x_{n}) \rightarrow L \) and \( f(y_{n}) \rightarrow M \). So if \( g(a) = L \) and \( g(b) = M \) we claim that \( g \) is continuous on \( [a,b] \). To show \( g \) is continuous at \( a \) we let \( \epsilon > 0 \) be given. Since \( g \) is uniformly continuous on \( (a,b) \) there exists \( \delta > 0 \) such that \( \forall x,y \in (a,b) \) such that \( \vert x-y \vert < \delta \) we have \( \vert f(x) - f(y) \vert < \frac{\epsilon}{2} \). Since \( x_{n} \rightarrow a \) there exists \( N_{1} \) such that \( n \geq N_{1} \) implies \( \vert x_{n} - a \vert < \frac{\delta}{2} \). Furthermore, since \( f(x_{n}) \rightarrow L \) there exists \( N_{2} \) such that \( \forall n \geq N_{2} \) we have \( \vert f(x_{n}) - f(a) \vert < \frac{\epsilon}{2} \). Thus for \( N = \max{N_{1},N_{2}} \) we have \( \forall n \geq N \) 
+        \[
+        \vert x_{n} - a \vert < \frac{\delta}{2}
+        \]
+        and
+        \[
+        \vert f(x_{n}) - f(a) \vert < \frac{\epsilon}{2}
+        \]
+        So, if \( \vert x - a \vert < \frac{\delta}{2} \) and \( n \geq N \) we get
+        \[
+        \vert x - x_{n} \vert \leq \vert x-a \vert + \vert a-x_{n} \vert < \frac{\delta}{2} + \frac{\delta}{2} = \delta
+        \]
+        which implies
+        \[
+        \vert f(x)-f(x_{n}) \vert < \frac{\epsilon}{2}
+        \]
+        Finally, we then get that, together, this implies that
+        \[
+        \vert f(x) - f(a) \vert \leq \vert f(x) - f(x_{n}) \vert + \vert f(x_{n}) - f(a) \vert < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+        \]
+        Therefore, \( g \) is continuous at \( a \) when \( g(a) = \lim_{n \rightarrow \infty} g(x_{n}) = L \). A similar proof demonstrates that \( g \) is continuous at \( b \) when \( g(b) = \lim_{n \rightarrow \infty} g(y_{n}) = M \). 
+    \end{enumerate}
+    \end{proof}
+    
+    
+    
+\end{enumerate}

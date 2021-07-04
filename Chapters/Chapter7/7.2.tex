@@ -1,0 +1,183 @@
+\section*{7.2}
+\begin{enumerate}
+    \item Let \( f \) be a bounded function on \( [a,b] \),and let \( P \) be an arbitrary partition on \( [a,b] \). First explain why \( U(f) \geq L(f,P) \). Now prove Lemma 7.2.6.
+    
+    \begin{proof}
+    Suppose, to the contrary, that there exists \( P \) such that \( L(f,P) > U(f) \). But then there would be a partition \( Q \) such that
+    \[
+    U(f) \leq U(f,Q) < L(f,P)
+    \]
+    which contradicts with 
+    \[
+    L(f,P) \leq U(f,Q)
+    \]
+    To prove Lemma 7.2.6 is now a simple matter, since we observe then, by the above, that \( U(f) \) is an upper bound for \( \{ L(f,P): P \in \mathcal{P} \} \). Thus \( L(f) \leq U(f) \).
+    \end{proof}
+    
+    \item
+    
+    \item Show directly (without appealing to Theorem 7.2) that the constant function \( f(x) = k \) is integrable over any closed interval \( [a,b] \). What is \( \int_{a}^{b} f \)?
+    
+    \begin{proof}
+    Let \( [a,b] \subset \mathbb{R} \) and \( f(x) = k \). We claim \( U(f) = k(b-a) = L(f)\). We first notice that for all partitions \( P \in \mathcal{P} \), we have \( M_i = k = m_i \) for all \( 1 \leq i \leq n_P \). So, given a partition \( P \in \mathcal{P} \), we have
+    \begin{align*}
+    U(f,P) &= \sum_{i=1}^{n} M_i \Delta x_i \\
+    &= \sum_{i=1}^{n} k \Delta x_i \\
+    &= \sum_{i=1}^{n} m_i \Delta x_i \\
+    &= L(f,P)
+    \end{align*}
+    Thus, for every partition \( P \in \mathcal{P} \) we have that \( U(f,P) = k(b-a) = L(f,P) \). Therefore, \( U(f) = k(b-a) = L(f) \). Therefore \( f(x) = k \) is integrable over every interval \( [a,b] \) and \( \int_a^b f = k(b-a) \). 
+    \end{proof}
+    
+    \item
+    \begin{enumerate}
+        \item Prove that a bounded function \( f \) is integrable on \( [a,b] \) if and only if there exists a sequence of partitions \( (P_n)_{n=1}^{\infty} \) satisfying
+        \[
+        \lim_{n \rightarrow \infty} [U(f,P_n) - L(f,P_n)]=0
+        \]
+        
+        \item For each \( n \), let \( P_n \) be a partition of \( [0,1] \) into \( n \) equal subintervals. Find formulas for \( U(f,P_n) \) and \( L(f,P_n) \) if \( f(x) = x \).
+        
+        \item Use the sequential criterion for integrability from (a) to show directly that \( f(x) = x \) is integrable on \( [0,1] \). 
+    \end{enumerate}
+    
+    \begin{proof}
+    \begin{enumerate}
+        \item Let \( f \) be bounded and integrable on \( [a,b] \). So, for every \( n \) we have that there exists \( P_n \) such that
+        \[
+        U(f,P_n) - L(f,P_n) < \frac{1}{n} 
+        \]
+        Thus
+        \[
+        0 \leq \lim_{n \rightarrow \infty} [U(f,P_n) - L(f,P_n)] \leq \lim_{n \rightarrow \infty} \frac{1}{n} = 0
+        \]
+        implying, by the Squeeze Theorem, that
+        \[
+        \lim_{n \rightarrow \infty} [U(f,P_n) - L(f,P_n)] = 0 
+        \]
+        
+        Now, let there exist a sequence \( (P_n) \) such that \( \lim [U(f,P_n)-L(f,P_n)] = 0 \) and let \( \epsilon > 0 \) be given. Then there exists an \( n \in \mathbb{N} \) such that \( U(f,P_n)-L(f,P_n) < \epsilon \). Thus, by Theorem 7.2.8, it follows that \( f \) is integrable on \( [a,b] \). 
+        
+        \item 
+        \begin{align*}
+            U(f,P_n) &= \sum_{k=1}^{n} M_k \Delta x_k \\
+            &= \sum_{k=1}^{n} \frac{k}{n}\left( \frac{1}{n} \right) \\
+            &= \frac{1}{n^2} \left( \sum_{k=1}^n k \right) \\
+            &= \frac{1}{n^2} \left( \frac{n(n+1)}{2} \right) \\
+            &= \frac{n+1}{2n}
+        \end{align*}
+        
+        \begin{align*}
+            L(f,P_n) &= \sum_{k=1}^{n} m_k \Delta x_k \\
+            &= \sum_{k=1}^{n} \frac{k-1}{n}\left( \frac{1}{n} \right) \\
+            &= \frac{1}{n^2}\sum_{k=1}^{n} k-1 \\
+            &= \frac{1}{n^2}\sum_{s=0}^{n-1} s \\
+            &= \frac{1}{n^2}\left( \frac{(n-1)n}{2} \right) \\
+            &= \frac{n-1}{2n}
+        \end{align*}
+        
+        \item We observe that, from (b), on \( [0,1] \) we have that \( f(x) = x \) admits
+        \[
+            U(f,P_n) - L(f,P_n) = \frac{n+1}{2n} - \frac{n-1}{2n} = \frac{1}{n}
+        \]
+        and thus
+        \[
+        \lim_{n \rightarrow \infty} U(f,P_n) - L(f,P_n) = \lim_{n \rightarrow \infty} \frac{1}{n} = 0
+        \]
+        Therefore, \( f(x) = x \) is integrable on \( [0,1] \)
+    \end{enumerate}
+    \end{proof}
+    
+    \item Assume that, for each \( n \), \( f_n \) is an integrable function on \( [a,b] \). If \( f_n \rightarrow f \) uniformly on \( [a,b] \), prove that \( f \) is also integrable on this set.
+    
+    \begin{lemma}
+    Let \( f_n \rightarrow f \) uniformly on \( [a,b] \) and let \( [c,d] \subseteq [a,b] \). Then, for all \( \epsilon > 0 \), there exists \( N \) such that \( n \geq N \) implies for the suprema on \( [c,d] \)
+    \[
+    \vert M^f - M^{f_n} \vert \leq \epsilon
+    \]
+    and for the infima on \( [c,d] \)
+    \[
+    \vert m^f - m^{f_n} \vert \leq \epsilon
+    \]
+    \end{lemma}
+    
+    \begin{proof}
+    So, let \( \epsilon > 0 \) be given, let \( N \) be such that \( n \geq N \) implies
+    \[
+    \vert f_n(x) - f(x) \vert < \frac{\epsilon}{2}
+    \]
+    and let \( [c,d] \subseteq [a,b] \). So if \( M^f \) is the \( \sup \) of \( f \) on \( [c,d] \) and \( m^f \) is the \( \inf \) of \( f \) on \( [c,d] \), then
+    \[
+    m^f - \frac{\epsilon}{2} \leq f(x) - \frac{\epsilon}{2} \leq f_n(x) \leq f(x) + \frac{\epsilon}{2} \leq M^f + \frac{\epsilon}{2}
+    \]
+    So \( f_n(x) \) is bounded by \( m^f - \frac{\epsilon}{2} \) and \( M^f + \frac{\epsilon}{2} \) on \( [c,d] \). So if \( M^{f_n} \) is the \( \sup \) of \( f_n \) on \( [c,d] \) and \( m^{f_n} \) is the \( \inf \) of \( f \) on \( [c,d] \), then 
+    \[
+    m^f - \frac{\epsilon}{2} \leq m^{f_n} \leq M^{f_n} \leq M^f + \frac{\epsilon}{2}
+    \]
+    If \( M^{f_n} \geq M^f \) then this implies that
+    \[
+        \vert M^{f_n} - M^f \vert \leq \frac{\epsilon}{2} < \epsilon
+    \]
+    On the other hand, when \( M^{f_n} < M^f \) then \( \vert M^{f_n} - M^f \vert > \epsilon  \) implies \( M^f - M^{f_n} > \epsilon \). But then there would exist \( x \) such that 
+    \begin{align*}
+        \vert M^f - f(x) \vert &\leq \frac{\epsilon}{2} \\
+        \intertext{and}\\
+        \vert f(x) - f_n(x) \vert &< \frac{\epsilon}{2}
+    \end{align*}
+    and therefore
+    \[
+    \vert M^f - f_n(x) \vert < \epsilon
+    \]
+    This in turn would imply that \( f_n(x) > M^{f_n} \) contradicting with \( M^{f_n} \) being the supremum. Therefore, when \( M^{f_n} < M^f \) we still have
+    \[
+    \vert M^{f_n} - M^f \vert < \epsilon
+    \]
+    A similar argument shows that
+    \[
+    \vert m^f - m^{f_n} \vert < \epsilon
+    \]
+    \end{proof}
+    
+    \begin{proof}
+    First, since each \( f_n \) is integrable on \( [a,b] \), it follows that each \( f_n \) is bounded on \( [a,b] \). By Exercise 6.7.8 (c) and uniform convergence of \( f_n \) on \( [a,b] \), it follows that \( f \) is bounded on \( [a,b] \). So, let \( \epsilon > 0 \) be given. From our Lemma, we can choose \( N \) so that \( n \geq N \) will imply
+    \begin{align*}
+    \vert M^f - M^{f_n} \vert &< \frac{\epsilon}{3(b-a)}
+    \intertext{and}
+    \vert m^{f_n} - m^f \vert &< \frac{\epsilon}{3(b-a)}
+    \end{align*}
+    on any interval in \( [a,b] \). Furthermore, for any such \( n \), by integrability of \( f_n \) we can choose a partition \( P \) so that
+    \[
+    \sum_k^s (M_{k}^{f_n}-m_{k}^{f_n})\Delta x_k < \frac{\epsilon}{3}
+    \]
+    Thus
+    \begin{align*}
+        \sum_k^s (M_{k}^{f} - m_{k}^{f})\Delta x_k &\leq \sum_k^s \vert M_{k}^{f} - m_{k}^{f} \vert \Delta x_k \\
+        &\leq \sum_k^s \vert M_{k}^{f} - M_{k}^{f_n} \vert \Delta x_k + \sum_k^s \vert M_{k}^{f_n}-m_{k}^{f_n} \vert \Delta x_k + \sum_k^s \vert m_{k}^{f_n}-m_{k}^{f} \vert \Delta x_k \\
+        &< \frac{\epsilon}{3(b-a)}\sum_k^s \Delta x_k + \frac{\epsilon}{3} + \frac{\epsilon}{3(b-a)}\sum_k^s \Delta x_k \\
+        &= \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} \\
+        &= \epsilon
+    \end{align*}
+    implying that \( f \) is integrable on \( [a,b] \). 
+    \end{proof}
+    
+    \item Let \( f:[a,b] \rightarrow \mathbb{R} \) be increasing on the set \( [a,b] \). Show that \( f \) is integrable on \( [a,b] \).
+    
+    \begin{proof}
+    Let \( \epsilon > 0 \) be given. Then for a given \( n \in \mathbb{N} \) we can choose a partition so that
+    \[
+    \Delta x_i = \frac{b-a}{n}
+    \]
+    Now, since \( f \) is increasing, it follows that 
+    \[
+    M_i = f(x_i) \text{ and } m_i = f(x_{i-1})
+    \]
+    Thus
+    \begin{align*}
+        \sum_{i=1}^n (M_i - m_i)\Delta x_i &= \sum_{i=1}^n (f(x_i)-f(x_{i-1}))\frac{b-a}{n} \\
+        &= \frac{b-a}{n}\sum_{i=1}^n (f(x_i)-f(x_{i-1})) \\
+        &= \frac{b-a}{n}(f(b)-f(a)) \\
+        &< \epsilon
+    \end{align*}
+    for \( n \) large enough.
+    \end{proof}
+\end{enumerate}
